@@ -1,18 +1,25 @@
-import Header from './components/Header'
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+import AboutSection from "./components/AboutSection";
+import BusinessSection from "./components/BusinessSection";
+import NewsSection from "./components/NewsSection";
+import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
       <Header />
-      <main className="mt-24 p-6">
-        <section id="hero" className="py-10 bg-gray-100">Hero Section</section>
-        <section id="about" className="py-10">About Us Section</section>
-        <section id="business" className="py-10 bg-gray-100">The Business Section</section>
-        <section id="news" className="py-10">News Section</section>
-        <section id="contact" className="py-10 bg-gray-100">Contact Section</section>
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <BusinessSection />
+        <NewsSection />
+        <ContactSection />
+        <Footer />
       </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
