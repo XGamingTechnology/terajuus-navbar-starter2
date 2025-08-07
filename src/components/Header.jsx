@@ -15,10 +15,27 @@ const navLinks = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation(); // Hook untuk mendeteksi URL saat ini
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Deteksi scroll
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white/70 backdrop-blur-md shadow-md z-50">
+    <header
+      className={`fixed top-0 left-0 w-full bg-white/70 backdrop-blur-md shadow-md z-50 transition-all duration-300 ${
+        isScrolled ? "translate-y-[-100%]" : ""
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
         <Link 
           to="/" 
           className="flex items-center text-xl font-bold tracking-wide text-gray-900 space-x-2"
@@ -26,8 +43,10 @@ export default function Header() {
           <span className="text-blue-800">PT.</span>
           <span className="relative">
             <span className="text-gray-800">TUS</span>
-            <span className="absolute -right-3 top-1/2 transform -translate-y-1/2 h-8 w-[2px] bg-blue-800 opacity-60"></span>
+            <span className="absolute -right-1 top-1/2 transform -translate-y-1/2 h-8 w-[2px] bg-blue-800 opacity-60"></span>
           </span>
+          {/* Menambahkan Logo */}
+          <img src="/Logo PT.png" alt="PT. Teraju Usaha Sukses" className="h-8 space-x-4" />
         </Link>
 
         <nav className="hidden md:flex space-x-8">

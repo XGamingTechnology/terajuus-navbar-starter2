@@ -53,7 +53,10 @@ export default function HeroSection() {
         {/* Background Gambar Transparan */}
         <div
           className="absolute inset-0 bg-cover bg-center pointer-events-none"
-          style={{ backgroundImage: "url('/02.jpg')" }}
+          style={{ backgroundImage: "url('/02.jpg')",
+            opacity: 0.5, // Efek transparansi
+            filter: 'blur(2px)', // Efek blur
+           }}
         ></div>
 
         {/* Konten */}
@@ -77,7 +80,7 @@ export default function HeroSection() {
           </h1>
 
           {/* Shape Oranye Muda */}
-          <div className="bg-orange-200 rounded-2xl opacity-60 shadow-xl px-6 py-12 md:px-16 md:py-20 w-full">
+          <div className="bg-orange-200 rounded-2xl opacity-80 shadow-xl px-6 py-12 md:px-16 md:py-20 w-full">
             <p className="text-lg md:text-xl text-black leading-relaxed max-w-5xl mx-auto mb-16">
               At PT. Teraju Usaha Sukses, we believe that sand is the foundation
               of progress. As a responsible marine sand mining company, we provide
@@ -133,7 +136,7 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* ABOUT SECTION (Digabung ke Hero) */}
+       {/* ABOUT SECTION (Digabung ke Hero) */}
       <section
         id="about"
         className="relative min-h-screen flex items-center justify-center bg-white px-6 py-24"
@@ -154,14 +157,18 @@ export default function HeroSection() {
             </p>
           </motion.div>
 
-          {/* Placeholder for future image or shape */}
+          {/* Gambar Animasi */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="w-full h-64 md:h-full bg-blue-100 rounded-2xl shadow-inner"
+            initial={{ opacity: 0, scale: 0.8 }} // Awal: Transparan dan lebih kecil
+            whileInView={{ opacity: 1, scale: 1 }} // Saat terlihat: Solid dan ukuran normal
+            transition={{ duration: 0.8, delay: 0.3 }} // Durasi 0.8s, mulai 0.3s setelah teks
+            className="w-full h-64 md:h-full rounded-2xl shadow-xl overflow-hidden"
           >
-            {/* Bisa diganti dengan ilustrasi atau animasi */}
+            {/* Gambar Background dengan object-cover untuk menjaga proporsi */}
+            <div 
+              className="w-full h-full bg-cover bg-center"
+              style={{ backgroundImage: "url('/01.jpg')" }}
+            ></div>
           </motion.div>
         </div>
       </section>

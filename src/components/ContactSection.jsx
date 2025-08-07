@@ -63,9 +63,8 @@ export default function ContactSection() {
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900 mb-1">Head Office</h4>
                     <p className="text-gray-700">
-                      Equity Tower Level 22 #B, SCBD Lot 9<br />
-                      Jl. Jend Sudirman Kav. 52-53<br />
-                      Jakarta Selatan - 12190
+                      Treasury Office Tower, 7th Floor Unit I, SCBD, District 8 Lot 28, Jl. Tulodong Atas 2 No. 28<br />
+                      Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta, 12190, Indonesia<br />
                     </p>
                   </div>
                 </div>
@@ -78,8 +77,8 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900 mb-1">Phone</h4>
-                    <p className="text-gray-700">+62 21 1234 5678</p>
-                    <p className="text-gray-700">+62 812 3456 7890</p>
+                    <p className="text-gray-700">+62 812-8483-3125</p>
+                    <p className="text-gray-700">+62 22 845-8876</p>
                   </div>
                 </div>
 
@@ -91,8 +90,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900 mb-1">Email</h4>
-                    <p className="text-gray-700">info@terajusuccess.com</p>
-                    <p className="text-gray-700">contact@terajusuccess.com</p>
+                    <p className="text-gray-700">terajuusahasukses@tus-com.net </p>
                   </div>
                 </div>
 
@@ -121,7 +119,7 @@ export default function ContactSection() {
             >
               {/* Google Maps Embed */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.277453940476!2d106.82512331533956!3d-6.224975062692094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3a1f1b1b1b1%3A0x1234567890abcdef!2sEquity%20Tower!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2212281198357!2d106.8038922!3d-6.2290465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f15016dfa8d5%3A0x1932ce0709d82af4!2sTreasury%20Office%20Tower!5e0!3m2!1sen!2sid!4v1723000000000!5m2!1sen!2sid"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

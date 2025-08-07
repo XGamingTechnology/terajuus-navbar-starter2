@@ -9,10 +9,10 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-bold mb-2">PT. Teraju Usaha Sukses</h3>
           <p className="text-sm text-gray-400">
-            Jl. Bahari Raya No. 8, Pangkalpinang<br />
-            Kepulauan Bangka Belitung, Indonesia<br />
-            Telp: (0717) 123-456<br />
-            Email: info@terajusukses.com
+            Treasury Office Tower, 7th Floor Unit I, SCBD, District 8 Lot 28, Jl. Tulodong Atas 2 No. 28<br />
+            Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta, 12190, Indonesia<br />
+            Telp: (022) 845-8876<br />
+            Email: terajuusahasukses@tus-com.net 
           </p>
         </div>
 
