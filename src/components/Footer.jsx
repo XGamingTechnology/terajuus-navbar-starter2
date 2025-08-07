@@ -1,5 +1,5 @@
 // components/Footer.tsx
-import { FaInstagram, FaTiktok, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaInstagram, FaTiktok, FaLinkedin, FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -19,7 +19,10 @@ export default function Footer() {
         {/* TENGAH - Slogan & Quote */}
         <div className="text-center">
           <h4 className="text-lg font-semibold italic mb-2">“Mining the future responsibly”</h4>
-          <p className="text-sm text-gray-400">"The sea, once it casts its spell, holds one in its net of wonder forever."<br />– Jacques Yves Cousteau</p>
+          <p className="text-sm text-gray-400">
+            "The sea, once it casts its spell, holds one in its net of wonder forever."
+            <br />– Jacques Yves Cousteau
+          </p>
         </div>
 
         {/* KANAN - Social Media */}
@@ -43,9 +46,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Copyright */}
-      <div className="mt-10 text-center text-sm text-gray-500">
-        &copy; {new Date().getFullYear()} PT. Teraju Usaha Sukses. All rights reserved.
-      </div>
+      <div className="mt-10 text-center text-sm text-gray-500">&copy; {new Date().getFullYear()} PT. Teraju Usaha Sukses. All rights reserved.</div>
     </footer>
   );
 }

@@ -54,19 +54,11 @@ export default function Header() {
             <Link
               key={link.name}
               to={link.href}
-              className={`font-medium relative group px-3 py-2 rounded-lg transition-all duration-300 ${
-                location.pathname === link.href 
-                  ? "bg-orange-200 text-black font-semibold" 
-                  : "text-gray-700 hover:text-blue-700"
-              }`}
+              className={`font-medium relative group px-3 py-2 rounded-lg transition-all duration-300 ${location.pathname === link.href ? "bg-orange-200 text-black font-semibold" : "text-gray-700 hover:text-blue-700"}`}
             >
               {link.name}
-              {location.pathname === link.href && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black"></span>
-              )}
-              {location.pathname !== link.href && (
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-700 group-hover:w-full transition-all duration-300"></span>
-              )}
+              {location.pathname === link.href && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black"></span>}
+              {location.pathname !== link.href && <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-700 group-hover:w-full transition-all duration-300"></span>}
             </Link>
           ))}
         </nav>
@@ -79,16 +71,7 @@ export default function Header() {
       {menuOpen && (
         <nav className="md:hidden bg-white border-t px-6 py-4">
           {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.href}
-              className={`block py-3 px-4 rounded-lg mb-2 ${
-                location.pathname === link.href 
-                  ? "bg-orange-200 text-black font-semibold" 
-                  : "text-gray-700"
-              }`}
-              onClick={() => setMenuOpen(false)}
-            >
+            <Link key={link.name} to={link.href} className={`block py-3 px-4 rounded-lg mb-2 ${location.pathname === link.href ? "bg-orange-200 text-black font-semibold" : "text-gray-700"}`} onClick={() => setMenuOpen(false)}>
               {link.name}
             </Link>
           ))}
