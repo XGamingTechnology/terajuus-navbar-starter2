@@ -40,13 +40,11 @@ export default function Header() {
           to="/" 
           className="flex items-center text-xl font-bold tracking-wide text-gray-900 space-x-2"
         >
-          <span className="text-blue-800">PT.</span>
+          <span className="text-blue-800">PT</span>
           <span className="relative">
             <span className="text-gray-800">TUS</span>
-            <span className="absolute -right-1 top-1/2 transform -translate-y-1/2 h-8 w-[2px] bg-blue-800 opacity-60"></span>
+            <span className="absolute -right-5 top-1/2 transform -translate-y-1/2 h-8 w-[3px] bg-blue-900 opacity-60"></span>
           </span>
-          {/* Menambahkan Logo */}
-          <img src="/Logo PT.png" alt="PT. Teraju Usaha Sukses" className="h-8 space-x-4" />
         </Link>
 
         <nav className="hidden md:flex space-x-8">
