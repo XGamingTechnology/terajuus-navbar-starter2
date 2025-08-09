@@ -1,10 +1,20 @@
 // src/components/AboutSection.jsx
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
+// react-pdf imports
+import { Document, Page, pdfjs } from 'react-pdf';
+
+// set pdf.worker (gunakan unpkg)
+import pdfWorker from 'pdfjs-dist/build/pdf.worker.min?url';
+pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
+
+/* ---------------------------
+   Data (boardMembers tetap sama)
+   --------------------------- */
 const boardMembers = [
   {
     name: 'IR IDWAN RIDWAN IDRIS',
@@ -50,31 +60,53 @@ const boardMembers = [
   },
 ];
 
+/* ------------------------------------------------
+   documentsList menyertakan 'file' (PDF) dan thumbnail
+   ------------------------------------------------ */
 const documentsList = [
-  { name: "NIB", desc: "(Nomor Induk Berusaha)", image: "/NIB 1.png" },
-  { name: "NPWP", desc: "(Nomor Pokok Wajib Pajak)", image: "/NPWP.png" },
-  { name: "ISO 14001", desc: "(Sertifikasi Lingkungan)", image: "/iso-14001.jpg" },
-  { name: "Akta Perusahaan", desc: "(Akta Perusahaan)", image: "/Akta PT.png" }
+  { name: "NIB", desc: "(Nomor Induk Berusaha)", image: "/NIB 1.png", file: "/NIB.pdf" },
+  { name: "NPWP", desc: "(Nomor Pokok Wajib Pajak)", image: "/NPWP.png", file: "/NPWP.pdf" },
+  { name: "PRLP-PHSL", desc: "Surat Persetujuan Rencana Lokasi Prioritas", image: "/PRLP-PHSL.png", file: "/PRLP-PHSL.pdf" },
+  { name: "Akta Perusahaan", desc: "(Akta Perusahaan)", image: "/Akta PT.png", file: "/Akta.pdf" }
 ];
 
 export default function AboutSection() {
-  // State untuk modal preview & zoom
-  const [previewImage, setPreviewImage] = useState(null);
-  const [scale, setScale] = useState(1);
+  // PDF viewer state
+  const [selectedDoc, setSelectedDoc] = useState(null); // absolute URL string
+  const [numPages, setNumPages] = useState(null);
+  const [pdfError, setPdfError] = useState(null);
+  const [pageWidth, setPageWidth] = useState(800);
 
-  const openPreview = (img) => {
-    setPreviewImage(img);
-    setScale(1); // reset zoom setiap buka
+  // Resize handler for page width
+  useEffect(() => {
+    function handleResize() {
+      if (typeof window !== 'undefined') {
+        setPageWidth(Math.min(1000, Math.floor(window.innerWidth * 0.8)));
+      }
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Open document: convert relative file (e.g. '/NIB.pdf') to absolute URL
+  const openDoc = (file) => {
+    try {
+      const url = file.startsWith('http') ? file : `${window.location.origin}${file}`;
+      setSelectedDoc(url);
+      setNumPages(null);
+      setPdfError(null);
+    } catch (err) {
+      console.error('openDoc error:', err);
+      setPdfError('Unable to open document');
+    }
   };
 
-  const closePreview = () => {
-    setPreviewImage(null);
-    setScale(1);
+  const closeDoc = () => {
+    setSelectedDoc(null);
+    setNumPages(null);
+    setPdfError(null);
   };
-
-  const zoomIn = () => setScale((s) => Math.min(3, +(s + 0.25).toFixed(2)));
-  const zoomOut = () => setScale((s) => Math.max(0.5, +(s - 0.25).toFixed(2)));
-  const resetZoom = () => setScale(1);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -101,7 +133,7 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* Vision & Mission Section */}
+      {/* Vision & Mission Section (unchanged) */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -139,7 +171,7 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* Good Corporate Governance Section */}
+      {/* Good Corporate Governance Section (unchanged) */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -178,7 +210,7 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* Company History Section */}
+      {/* Company History Section (unchanged) */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -222,7 +254,9 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* Legality Section */}
+      {/* -------------------------
+         Legality Section (PDF)
+         ------------------------- */}
       <section className="py-20 bg-gray-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -233,8 +267,21 @@ export default function AboutSection() {
           {/* Grid Dokumen */}
           <div className="grid md:grid-cols-4 gap-6">
             {documentsList.map((item, index) => (
-              <motion.div key={index} className="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer group" whileHover={{ y: -10 }} transition={{ duration: 0.3 }} onClick={() => openPreview(item.image)}>
-                <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${item.image}')` }}></div>
+              <motion.div
+                key={index}
+                className="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer group"
+                whileHover={{ y: -10 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => openDoc(item.file)}
+              >
+                {/* Thumbnail (opsional) */}
+                <div
+                  className="h-48 bg-cover bg-center"
+                  style={{ backgroundImage: item.image ? `url('${item.image}')` : "none", backgroundColor: item.image ? undefined : '#EDF2F7' }}
+                >
+                  {!item.image && <div className="h-full flex items-center justify-center text-gray-600">📄 {item.name}</div>}
+                </div>
+
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-blue-800 mb-2">{item.name}</h3>
                   <p className="text-gray-700 text-center">{item.desc}</p>
@@ -243,33 +290,59 @@ export default function AboutSection() {
             ))}
           </div>
 
-          {/* Modal Preview */}
-          {previewImage && (
-            <div className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50" onClick={closePreview}>
-              <div className="relative max-w-5xl w-full max-h-[90vh] overflow-auto p-4">
-                {/* Zoom controls */}
-                <div className="absolute left-4 top-4 z-50 flex items-center gap-2">
-                  <button onClick={(e) => { e.stopPropagation(); zoomOut(); }} className="bg-white/90 text-black px-3 py-1 rounded shadow">-</button>
-                  <button onClick={(e) => { e.stopPropagation(); resetZoom(); }} className="bg-white/90 text-black px-3 py-1 rounded shadow">reset</button>
-                  <button onClick={(e) => { e.stopPropagation(); zoomIn(); }} className="bg-white/90 text-black px-3 py-1 rounded shadow">+</button>
+          {/* Modal PDF Viewer (scroll all pages) */}
+          {selectedDoc && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50"
+              onClick={closeDoc}
+            >
+              <div
+                className="relative bg-white rounded-lg shadow-xl w-full max-w-5xl h-[90vh] overflow-auto p-4"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex justify-between items-center mb-3">
+                  <div className="font-semibold">Preview — {selectedDoc}</div>
+                  <div className="flex items-center gap-2">
+                    <a href={selectedDoc} target="_blank" rel="noreferrer" className="text-sm text-blue-700 underline">Open in new tab</a>
+                    <button onClick={closeDoc} className="bg-gray-200 px-3 py-1 rounded">Close ✖</button>
+                  </div>
                 </div>
 
-                <img
-                  src={previewImage}
-                  alt="Document Preview"
-                  onClick={(e) => e.stopPropagation()}
-                  style={{ transform: `scale(${scale})`, transformOrigin: 'center', transition: 'transform 0.15s ease' }}
-                  className="mx-auto block w-auto h-auto max-w-full max-h-[90vh] object-contain"
-                />
+                <div className="flex-1">
+                  {pdfError && (
+                    <div className="text-red-600 mb-4">
+                      Failed to load document: {pdfError}
+                    </div>
+                  )}
 
-                <button onClick={(e) => { e.stopPropagation(); closePreview(); }} className="absolute top-4 right-4 bg-white text-black rounded-full p-2 shadow hover:bg-gray-200">✕</button>
+                  <Document
+                    file={{ url: selectedDoc }}
+                    onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+                    onLoadError={(err) => {
+                      console.error('react-pdf load error:', err);
+                      setPdfError(err?.message || 'Unknown error');
+                    }}
+                    loading={<div className="text-center py-12">Loading document...</div>}
+                  >
+                    {/* Render semua halaman (scrollable) */}
+                    {numPages &&
+                      Array.from(new Array(numPages), (el, i) => (
+                        <div key={`page_${i + 1}`} className="flex justify-center my-4">
+                          <Page
+                            pageNumber={i + 1}
+                            width={pageWidth}
+                          />
+                        </div>
+                      ))}
+                  </Document>
+                </div>
               </div>
             </div>
           )}
         </div>
       </section>
 
-      {/* Leadership Team Section */}
+      {/* Leadership Team Section (unchanged) */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">

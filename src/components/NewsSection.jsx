@@ -14,9 +14,9 @@ export default function NewsSection() {
   const newsItems = [
     {
       id: 1,
-      title: 'PT. Teraju Signs Major Export Agreement with International Partners',
+      title: 'PT Teraju Signs Major Export Agreement with International Partners',
       date: 'December 15, 2025',
-      excerpt: 'Landmark deal marks our expansion into global markets for marine sand exports...',
+      excerpt: 'Landmark deal marks our expansion into global markets for marine sand distribution...',
       category: 'Business',
       image: '/news1.jpg'
     },

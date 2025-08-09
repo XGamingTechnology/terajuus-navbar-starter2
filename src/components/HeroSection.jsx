@@ -20,16 +20,16 @@ export default function HeroSection() {
   // Data untuk News Section
   const newsItems = [
     {
-      title: 'PT. Teraju Signs Export Agreement with Southeast Asia Partners',
+      title: 'PT Teraju Signs Agreement with Southeast Asia Partners',
       date: 'July 20, 2025',
       snippet:
-        'A new milestone in our export initiative was marked with a signed agreement to supply marine sand to Southeast Asian countries...',
+        'A new milestone in our experience initiative was marked with a signed agreement to supply marine sand to Southeast Asian countries...',
     },
     {
       title: 'Sustainable Mining Practices in Action',
       date: 'July 15, 2025',
       snippet:
-        'Our operations at Pulau Bangka highlight eco-conscious extraction techniques, leading the region in responsible dredging...',
+        'Our operations at Pulau Batam highlight eco-conscious extraction techniques, leading the region in responsible dredging...',
     },
     {
       title: 'Community Development Program Launched',
@@ -82,7 +82,7 @@ export default function HeroSection() {
           {/* Shape Oranye Muda */}
           <div className="bg-orange-200 rounded-2xl opacity-80 shadow-xl px-6 py-12 md:px-16 md:py-20 w-full">
             <p className="text-lg md:text-xl text-black leading-relaxed max-w-5xl mx-auto mb-16">
-              At PT. Teraju Usaha Sukses, we believe that sand is the foundation
+              At PT Teraju Usaha Sukses, we believe that sand is the foundation
               of progress. As a responsible marine sand mining company, we provide
               high-quality materials essential for construction, land reclamation,
               and national infrastructure development.
@@ -152,7 +152,7 @@ export default function HeroSection() {
               Supporting <span className="text-blue-700">Coastal Communities</span>
             </h2>
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-              At <strong>PT. Teraju Usaha Sukses</strong>, we understand the importance of supporting coastal communities through responsible resource management. We believe that marine sand mining can empower local economies while preserving marine ecosystems.
+              At <strong>PT Teraju Usaha Sukses</strong>, we understand the importance of supporting coastal communities through responsible resource management. We believe that marine sand mining can empower local economies while preserving marine ecosystems.
               By creating job opportunities and supporting infrastructure development, we aim to uplift entire regions and ensure long-term resilience.
             </p>
           </motion.div>
@@ -190,7 +190,7 @@ export default function HeroSection() {
             Sustainable Future
           </h2>
           <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto mb-10">
-            At PT. Teraju Usaha Sukses, we see marine sand as a catalyst for
+            At PT Teraju Usaha Sukses, we see marine sand as a catalyst for
             transformation. Our mission is to empower industries and communities
             to harness natural resources for a sustainable, innovative future. We
             prioritize environmental monitoring, advanced dredging technology, and

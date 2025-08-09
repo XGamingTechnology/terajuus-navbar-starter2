@@ -10,8 +10,8 @@ export default function BusinessSection() {
   const operationAreas = [
     {
       id: 1,
-      name: "Area Penambangan Pulau Bangka",
-      description: "(Deskripsi detail tentang area penambangan di Pulau Bangka - lokasi, kapasitas, spesifikasi material)"
+      name: "Area Penambangan Pulau Batam",
+      description: "(Deskripsi detail tentang area penambangan di Pulau Batam - lokasi, kapasitas, spesifikasi material)"
     },
     {
       id: 2,
@@ -108,7 +108,7 @@ export default function BusinessSection() {
             </h2>
             <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
             <p className="text-lg text-gray-700 max-w-4xl mx-auto">
-              PT. Teraju Usaha Sukses is a marine sand mining and distribution company that provides high-quality materials 
+              PT Teraju Usaha Sukses is a marine sand mining and distribution company that provides high-quality materials 
               essential for construction, land reclamation, and national infrastructure development. We operate with 
               sustainable practices and cutting-edge technology to meet Indonesia's growing infrastructure needs.
             </p>
@@ -221,7 +221,7 @@ export default function BusinessSection() {
               Operation Area
             </h2>
             <p className="text-lg text-gray-700">
-              Wilayah operasi penambangan dan distribusi kami
+              Mining and Distribution Area
             </p>
           </div>
 
@@ -327,7 +327,7 @@ export default function BusinessSection() {
               Our Products
             </h2>
             <p className="text-lg text-gray-700">
-              Material berkualitas tinggi untuk berbagai kebutuhan konstruksi
+              High Quality Materials for Construction and Industry
             </p>
           </div>
 
