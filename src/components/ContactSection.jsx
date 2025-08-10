@@ -6,12 +6,31 @@ import { Link } from "react-router-dom";
 
 export default function ContactSection() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50"   >
       {/* Hero Banner Section */}
-      <section className="relative h-96 md:h-[500px] bg-gradient-to-r from-blue-800 to-orange-600 flex items-center justify-center">
+      <section className="relative h-96 md:h-[500px] bg-gradient-to-r from-blue-400 to-orange-600 flex items-center justify-center"
+      style={{
+          position: "relative" ,
+          height: "100vh" ,
+          width: "100%" ,
+          background: `url("/Picture1.jpg") center/cover no-repeat`, 
+          }}
+      >
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative z-10 text-center px-4">
-          <motion.h1 className="text-4xl md:text-6xl font-bold text-white mb-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <motion.h1 className="text-4xl md:text-6xl font-bold text-white mb-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} 
+          style={{
+              fontSize: "5rem",
+              fontWeight: "bold",
+              marginBottom: "1rem",
+              textShadow: `
+                -1px -1px 0 #000,
+                 1px -1px 0 #000,
+                -1px  1px 0 #000,
+                 1px  1px 0 #000
+              `,
+            }}
+          >
             Contact Us
           </motion.h1>
           <motion.p className="text-xl text-white max-w-3xl mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
@@ -151,15 +170,6 @@ export default function ContactSection() {
               Send Message
             </button>
           </form>
-        </div>
-      </section>
-
-      {/* Back to Home Button */}
-      <section className="py-12 bg-white">
-        <div className="text-center">
-          <Link to="/" className="inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-8 rounded-full transition duration-300">
-            Kembali ke Home
-          </Link>
         </div>
       </section>
     </div>

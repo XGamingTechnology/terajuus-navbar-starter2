@@ -10,23 +10,23 @@ export default function BusinessSection() {
   const operationAreas = [
     {
       id: 1,
-      name: "Area Penambangan Pulau Batam",
-      description: "(Deskripsi detail tentang area penambangan di Pulau Batam - lokasi, kapasitas, spesifikasi material)"
+      name: "Mining Area Batam",
+      description: "(--)"
     },
     {
       id: 2,
-      name: "Area Distribusi Jakarta",
-      description: "(Deskripsi tentang area distribusi di Jakarta - jaringan logistik, pelabuhan, kapasitas pengiriman)"
+      name: "Mining Area Jakarta",
+      description: "(--)"
     },
     {
       id: 3,
-      name: "Area Distribusi Surabaya",
-      description: "(Deskripsi tentang area distribusi di Surabaya - jaringan mitra, infrastruktur transportasi)"
+      name: "Distribution Area Surabaya",
+      description: "(--)"
     },
     {
       id: 4,
-      name: "Area Distribusi Makassar",
-      description: "(Deskripsi tentang area distribusi di Makassar - ekspansi pasar timur Indonesia)"
+      name: "Distribution Area Pekanbaru",
+      description: "(--)"
     }
   ];
 
@@ -77,7 +77,15 @@ export default function BusinessSection() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Banner Section */}
-      <section className="relative h-96 md:h-[500px] bg-gradient-to-r from-blue-800 to-orange-600 flex items-center justify-center">
+      <section 
+      className="relative h-96 md:h-[500px] bg-gradient-to-r from-blue-400 to-orange-600 flex items-center justify-center"
+      style={{
+      position: "relative" ,
+      height: "100vh" ,
+      width: "100%" ,
+      background: `url("/Picture4.jpeg") center/cover no-repeat`, 
+          }}
+      >
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative z-10 text-center px-4">
           <motion.h1 
@@ -85,8 +93,19 @@ export default function BusinessSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            style={{
+              fontSize: "5rem",
+              fontWeight: "bold",
+              marginBottom: "1rem",
+              textShadow: `
+                -1px -1px 0 #000,
+                 1px -1px 0 #000,
+                -1px  1px 0 #000,
+                 1px  1px 0 #000
+              `,
+            }}
           >
-            The Business
+            Our Services
           </motion.h1>
           <motion.p 
             className="text-xl text-white max-w-3xl mx-auto"
@@ -94,7 +113,7 @@ export default function BusinessSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Marine Sand Solutions for Indonesia's Infrastructure Development
+            Comprehensive Mineral Resource Solutions We deliver premium mineral resources and logistics support for major infrastructure, construction, and reclamation projects across Southeast Asia.
           </motion.p>
         </div>
       </section>
@@ -104,40 +123,43 @@ export default function BusinessSection() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Business
+              Reliable Resource Delivery for High-Impact Projects
             </h2>
             <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
             <p className="text-lg text-gray-700 max-w-4xl mx-auto">
-              PT Teraju Usaha Sukses is a marine sand mining and distribution company that provides high-quality materials 
-              essential for construction, land reclamation, and national infrastructure development. We operate with 
-              sustainable practices and cutting-edge technology to meet Indonesia's growing infrastructure needs.
+               Our core service focuses on delivering high-quality sand and minerals that meet international standards. We support a wide range of projects—from land reclamation and port development to highways and industrial construction. 
+               With strong partnerships, robust sourcing networks, and a commitment to sustainability, we ensure consistent supply, timely delivery, and tailored solutions to meet each project’s unique needs. Our experience spans regional and international operations with a focus on environmental and logistical efficiency. 
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
+          <div className="grid md:grid-cols-2 gap-8 mt-16">
             {[
               { 
-                title: "Marine Sand Mining", 
-                desc: "(Proses penambangan pasir laut dengan teknologi ramah lingkungan)" 
+                title: "Bulk Mineral Supply", 
+                desc: "(Provision of high-grade sand, aggregates, and minerals in large quantities to support civil and industrial construction demands.)" 
               },
               { 
-                title: "Material Processing", 
-                desc: "(Pengolahan dan klasifikasi material sesuai spesifikasi industri)" 
+                title: "Logistics & Distribution", 
+                desc: "(End-to-end logistics solutions for timely and secure mineral transport, including land and sea freight coordination.)" 
               },
               { 
-                title: "Distribution Network", 
-                desc: "(Jaringan distribusi yang mencakup seluruh Indonesia)" 
+                title: "Site Assessment & Planning", 
+                desc: "(Assessment of geographical and environmental conditions to ensure resource suitability and optimal logistics for each site.)" 
+              },
+              { 
+                title: "International Supply Chain", 
+                desc: "(Cross-border sourcing and delivery of mineral resources with customs compliance and regional partnership support.)" 
               }
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-gradient-to-br from-blue-50 to-orange-50 p-8 rounded-xl shadow-lg text-center"
+                className="bg-gradient-to-br from-blue-100 to-orange-100 p-8 rounded-xl shadow-lg text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-white text-2xl font-bold">{index + 1}</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>
@@ -147,6 +169,98 @@ export default function BusinessSection() {
           </div>
         </div>
       </section>
+
+      {/* Our Key Advantages */}
+<section className="py-20 bg-white"style={{ backgroundColor: "#e9fafa" }}>
+  <div className="max-w-7xl mx-auto px-6">
+
+    {/* Heading */}
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+        OUR KEY ADVANTAGES
+      </h2>
+      <p className="text-gray-600 text-lg">
+        Unlock greater efficiency, sustainability, and reliability in mineral supply operations.
+      </p>
+    </div>
+
+    {/* Top Description */}
+    <div className="max-w-3xl mx-auto text-center mb-12">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Integrated Supply & Logistics Framework
+      </h3>
+      <p className="text-gray-700 mb-4">
+        Our end-to-end framework ensures that you receive high-grade mineral resources—
+        on time, within spec, and responsibly sourced.
+      </p>
+      <p className="text-gray-700 mb-4">
+        We merge proven processes and advanced tracking systems to streamline operations,
+        boost transparency, and enhance delivery efficiency.
+      </p>
+      <p className="text-gray-700 mb-4">
+        Monitor shipments in real-time with our analytics dashboard and gain insights to optimize your projects.
+      </p>
+      <p className="text-gray-700 mb-6">
+        Built to scale, our framework adapts to evolving project requirements and international standards.
+      </p>
+
+      {/* Stats */}
+      <div className="flex items-center justify-center gap-6">
+        <div>
+          <p className="text-3xl font-bold text-[#d16b33]">95%</p>
+          <p className="text-sm text-gray-600">Annual Client Retention</p>
+        </div>
+        <div>
+          <p className="text-3xl font-bold text-[#1CA7A2]">24/7</p>
+          <p className="text-sm text-gray-600">Dedicated Support</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Cards */}
+    <div className="space-y-8">
+
+      {/* First Row - 4 items */}
+      <div className="grid md:grid-cols-4 gap-6">
+        {[
+          { icon: "icons/01.svg", title: "Secure Operations", desc: "We ensure safety and reliability in sourcing and delivery with certified protocols and strict compliance." },
+          { icon: "icons/02.svg", title: "Logistics Excellence", desc: "From extraction to delivery—our integrated logistics ensures safe and efficient transport, both domestically and internationally." },
+          { icon: "icons/03.svg", title: "Real-Time Analytics", desc: "Track shipments, quality checks, and performance metrics through our transparent analytics platform." },
+          { icon: "icons/04.svg", title: "Sustainability Compliance", desc: "Ethical sourcing and environmental safeguards are embedded in every stage of our supply chain." }
+        ].map((item, index) => (
+          <div
+            key={index}
+            className="bg-white border border-[#1CA7A2] rounded-xl p-6 shadow-md hover:border-[#d16b33] hover:shadow-lg transition"
+          >
+            <img src={item.icon} alt={item.title} className="w-12 h-12 mb-4" />
+            <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
+            <p className="text-gray-700 text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Second Row - 3 items */}
+      <div className="grid md:grid-cols-3 gap-6">
+        {[
+          { icon: "icons/05.svg", title: "Operational Efficiency", desc: "Optimize your project timeline with streamlined workflows and proactive management." },
+          { icon: "icons/06.svg", title: "Performance Monitoring", desc: "Get insights into cost, delivery timing, and resource utilization with detailed analytics." },
+          { icon: "icons/07.svg", title: "Scalable Growth", desc: "Expand your sourcing volume and reach new regions confidently with our flexible infrastructure." }
+        ].map((item, index) => (
+          <div
+            key={index}
+            className="bg-white border border-[#1CA7A2] rounded-xl p-6 shadow-md hover:border-[#d16b33] hover:shadow-lg transition"
+          >
+            <img src={item.icon} alt={item.title} className="w-12 h-12 mb-4" />
+            <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
+            <p className="text-gray-700 text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
       {/* Existing Market, Agent, and Partner Section */}
       <section className="py-20 bg-white">
@@ -214,7 +328,7 @@ export default function BusinessSection() {
       </section>
 
       {/* Operation Area Section */}
-      <section className="py-20 bg-gray-100">
+      <section className="py-20 bg-gray-100"style={{ backgroundColor: "#e9fafa" }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -289,7 +403,7 @@ export default function BusinessSection() {
 
           <div className="relative">
             {/* Process Line */}
-            <div className="hidden md:block absolute top-16 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-orange-500"></div>
+            <div className="hidden md:block absolute top-16 left-0 right-0 h-1 bg-gradient-to-r from-blue-300 to-orange-600"></div>
             
             <div className="grid md:grid-cols-5 gap-8 mt-8">
               {[
@@ -376,18 +490,6 @@ export default function BusinessSection() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Back to Home Button */}
-      <section className="py-12 bg-white">
-        <div className="text-center">
-          <Link 
-            to="/" 
-            className="inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-8 rounded-full transition duration-300"
-          >
-            Kembali ke Home
-          </Link>
         </div>
       </section>
     </div>
