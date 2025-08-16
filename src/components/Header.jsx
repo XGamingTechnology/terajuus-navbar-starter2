@@ -88,16 +88,16 @@ export default function Header() {
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
-          <button
+            <button
             onClick={() => handleScrollTo("hero")}
-            className="flex items-center text-xl font-bold tracking-wide text-gray-900 space-x-2"
-          >
-            <span className="text-blue-800">PT</span>
-            <span className="relative">
-              <span className="text-gray-800">TUS</span>
-              <span className="absolute -right-5 top-1/2 transform -translate-y-1/2 h-8 w-[3px] bg-blue-900 opacity-60"></span>
-            </span>
-          </button>
+              className="flex items-center" // Menghapus class yang tidak diperlukan lagi
+              >
+              <img 
+              src="/Logo PT.png" 
+              alt="PT. Teraju Usaha Sukses" 
+              className="h-10 w-auto" // h-8 untuk tinggi, w-auto agar lebar menyesuaikan proporsi
+              />
+              </button>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex space-x-8">

@@ -1,27 +1,27 @@
 import { motion } from 'framer-motion';
 import { CheckCircle, XCircle } from "lucide-react";
 
- // Data untuk News Section
-  const newsItems = [
-    {
-      title: 'PT Teraju Signs Agreement with Southeast Asia Partners',
-      date: 'July 20, 2025',
-      snippet:
-        'A new milestone in our experience initiative was marked with a signed agreement to supply marine sand to Southeast Asian countries...',
-    },
-    {
-      title: 'Sustainable Mining Practices in Action',
-      date: 'July 15, 2025',
-      snippet:
-        'Our operations at Pulau Batam highlight eco-conscious extraction techniques, leading the region in responsible dredging...',
-    },
-    {
-      title: 'Community Development Program Launched',
-      date: 'July 10, 2025',
-      snippet:
-        'We’ve launched new community engagement efforts in coastal villages to support education and infrastructure...',
-    },
-  ];
+// Data untuk News Section
+const newsItems = [
+  {
+    title: 'PT Teraju Signs Agreement with Southeast Asia Partners',
+    date: 'July 20, 2025',
+    snippet:
+      'A new milestone in our experience initiative was marked with a signed agreement to supply marine sand to Southeast Asian countries...',
+  },
+  {
+    title: 'Sustainable Mining Practices in Action',
+    date: 'July 15, 2025',
+    snippet:
+      'Our operations at Pulau Batam highlight eco-conscious extraction techniques, leading the region in responsible dredging...',
+  },
+  {
+    title: 'Community Development Program Launched',
+    date: 'July 10, 2025',
+    snippet:
+      'We’ve launched new community engagement efforts in coastal villages to support education and infrastructure...',
+  },
+];
 
 const HeroSection = () => {
   return (
@@ -187,9 +187,97 @@ const HeroSection = () => {
           font-weight: bold;
           text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
         }
+
+        /* Media Query untuk Mobile - Selector berdasarkan posisi */
+        @media (max-width: 768px) {
+          /* Hero Section - asumsi ini adalah section pertama */
+          section:first-of-type {
+            padding-top: 60px !important;
+            padding-left: 4% !important;
+            padding-right: 4% !important;
+          }
+          
+          section:first-of-type h1 {
+            font-size: 2rem !important;
+            margin-bottom: 0.75rem !important;
+          }
+
+          section:first-of-type p {
+            font-size: 1rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+
+          /* Shape Bawah - asumsi ini adalah div pertama di dalam section pertama */
+          section:first-of-type > div:nth-child(2) {
+            height: 180px !important;
+          }
+
+          section:first-of-type > div:nth-child(2) > span:first-child {
+            font-size: 1.2rem !important;
+          }
+
+          section:first-of-type > div:nth-child(2) > span:last-child {
+            font-size: 0.75rem !important;
+          }
+
+          /* Grid Card Section - asumsi ini adalah section kedua */
+          section:nth-of-type(2) {
+            padding: 30px 4% !important;
+            gap: 15px !important;
+          }
+
+          .grid-card img {
+            height: 250px;
+          }
+          
+          .hover-overlay p {
+            font-size: 0.9rem;
+            padding: 15px;
+          }
+          
+          .card-number {
+            font-size: 1.2rem;
+            bottom: 8px;
+            left: 8px;
+          }
+
+          /* News Section - asumsi ini adalah section ketiga */
+          section:nth-of-type(3) {
+            padding: 30px 0 !important;
+          }
+          
+          section:nth-of-type(3) .max-w-6xl {
+            padding-left: 4% !important;
+            padding-right: 4% !important;
+          }
+          
+          section:nth-of-type(3) .text-3xl {
+            font-size: 1.875rem !important;
+          }
+          
+          section:nth-of-type(3) .mb-12 {
+            margin-bottom: 2rem !important;
+          }
+          
+          section:nth-of-type(3) .gap-8 {
+            gap: 1.5rem !important;
+          }
+          
+          .bg-\\[\\#fdf7f2\\] {
+            padding: 1rem !important;
+          }
+          
+          .bg-\\[\\#fdf7f2\\] .text-xl {
+            font-size: 1.125rem !important;
+          }
+          
+          .bg-\\[\\#fdf7f2\\] .text-sm {
+            font-size: 0.875rem !important;
+          }
+        }
       `}</style>
 
-     {/* NEWS SECTION (Digabung ke Hero) */}
+      {/* NEWS SECTION (Digabung ke Hero) */}
       <section id="news-preview" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.h2

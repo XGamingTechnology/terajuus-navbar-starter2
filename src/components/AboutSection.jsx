@@ -1,6 +1,3 @@
-// src/components/AboutSection.jsx
-'use client';
-
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -26,7 +23,7 @@ const boardMembers = [
   {
     name: 'LADY DINAYLA',
     position: 'Sekretaris',
-    image: '/Sekretaris.png',
+    image: '/Sekretaris1.png',
     description:
       'Profesional administrasi yang terampil, dengan latar belakang hukum dan tata kelola perusahaan. Ahli dalam manajemen dokumen dan komunikasi eksekutif.',
   },
@@ -112,13 +109,13 @@ export default function AboutSection() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Banner Section */}
       <section 
-      className="relative h-96 md:h-[500px] bg-gradient-to-r from-blue-400 to-orange-600 flex items-center justify-center" 
-      style={{
-          position: "relative" ,
-          height: "100vh" ,
-          width: "100%" ,
-          background: `url("/Picture5.jpeg") center/cover no-repeat`, 
-          }}
+        className="relative h-96 md:h-[500px] bg-gradient-to-r from-blue-400 to-orange-600 flex items-center justify-center" 
+        style={{
+          position: "relative",
+          height: "100vh",
+          width: "100%",
+          background: `url("/Picture1.jpg") center/cover no-repeat`,
+        }}
       >
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative z-10 text-center px-4">
@@ -152,43 +149,86 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* Vision & Mission Section (unchanged) */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Get to know our Vision & Mission
-            </h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
-          </div>
+{/* Vision & Mission Section */}
+<section className="py-20 bg-white">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Get to know our Vision & Mission
+      </h2>
+      <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+    </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div className="relative h-80 rounded-xl overflow-hidden cursor-pointer group" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/vision-bg.jpg')" }}></div>
-              <div className="absolute inset-0 bg-blue-400/80 group-hover:bg-orange-600 transition-all duration-500"></div>
-              <div className="relative z-10 h-full flex flex-col justify-center items-center p-8">
-                <h3 className="text-2xl font-bold text-white mb-4">Vision</h3>
-                <p className="text-white text-lg text-center">
-                  To build a stronger Indonesia by laying a resilient and sustainable foundation of infrastructure that empowers communities, drives economic growth, and inspires future generations.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div className="relative h-80 rounded-xl overflow-hidden cursor-pointer group" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/mission-bg.jpg')" }}></div>
-              <div className="absolute inset-0 bg-orange-600 group-hover:bg-blue-400/80 transition-all duration-500"></div>
-              <div className="relative z-10 h-full flex flex-col justify-center items-center p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Mission</h3>
-                <ol className="list-decimal pl-5 space-y-3 text-left text-white">
-                  <li>To responsibly harness natural resources with integrity and a deep commitment to environmental stewardship.</li>
-                  <li>To deliver exceptional value and trusted partnerships for our customers, collaborators, and stakeholders.</li>
-                  <li>To foster human potential and advance coastal regions through inclusive and sustainable development initiatives.</li>
-                </ol>
-              </div>
-            </motion.div>
-          </div>
+    <div className="grid md:grid-cols-2 gap-8">
+      {/* Kotak Vision */}
+      <motion.div 
+        className="relative h-80 rounded-xl overflow-hidden cursor-pointer group"
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/vision-bg.jpg')" }}
+        ></div>
+        <div className="absolute inset-0 bg-blue-400/80 group-hover:bg-orange-600 transition-all duration-500"></div>
+        <div className="relative z-10 h-full flex flex-col justify-center items-center p-8">
+          <h3 className="text-2xl font-bold text-white mb-4">Vision</h3>
+          <p className="text-white text-lg text-center vision-text">
+            To build a stronger Indonesia by laying a resilient and sustainable foundation of infrastructure that empowers communities, drives economic growth, and inspires future generations.
+          </p>
         </div>
-      </section>
+      </motion.div>
+
+      {/* Kotak Mission */}
+      <motion.div 
+        className="relative h-80 rounded-xl overflow-hidden cursor-pointer group"
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/mission-bg.jpg')" }}
+        ></div>
+        <div className="absolute inset-0 bg-orange-600 group-hover:bg-blue-400/80 transition-all duration-500"></div>
+        <div className="relative z-10 h-full flex flex-col justify-center items-center p-8">
+          <h3 className="text-2xl font-bold text-white mb-6">Mission</h3>
+          <ol className="list-decimal pl-5 space-y-3 text-white text-left mission-text">
+            <li>To responsibly harness natural resources with integrity and a deep commitment to environmental stewardship.</li>
+            <li>To deliver exceptional value and trusted partnerships for our customers, collaborators, and stakeholders.</li>
+            <li>To foster human potential and advance coastal regions through inclusive and sustainable development initiatives.</li>
+          </ol>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
+              {/* CSS */}
+                <style jsx>{`
+              /* Media Query untuk Mobile */
+                @media (max-width: 768px) {
+              /* Kotak Vision */
+              .vision-text {
+              font-size: 0.8rem !important;
+              }
+
+              /* Kotak Mission */
+              .mission-text {
+              font-size: 0.6rem !important;
+              }
+
+          /* List dalam Mission */
+          .grid.md\:grid-cols-2 > div:nth-child(2) ol {
+            font-size: 1.1rem !important;
+          }
+
+          /* List item dalam Mission */
+          .grid.md\:grid-cols-2 > div:nth-child(2) ol li {
+            font-size: 1.1rem !important;
+          }
+        }
+        /* --- Akhir Media Query Mobile --- */
+      `}</style>
 
       {/* Good Corporate Governance Section (unchanged) */}
       <section className="py-20 bg-white">
