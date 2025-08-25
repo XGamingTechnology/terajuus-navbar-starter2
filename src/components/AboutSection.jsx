@@ -385,7 +385,7 @@ export default function AboutSection() {
           {/* Gambar Struktur Organisasi */}
           <div className="text-center mb-16">
             <img 
-              src="/struktur.png" 
+              src="/strukturlama.png" 
               alt="Struktur Organisasi PT Teraju Usaha Sukses" 
               className="w-full max-w-4xl h-auto rounded-xl shadow-lg mx-auto"
             />
