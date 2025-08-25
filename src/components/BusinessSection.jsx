@@ -10,12 +10,12 @@ export default function BusinessSection() {
   const operationAreas = [
     {
       id: 1,
-      name: "Mining Area Batam",
+      name: "Project Area Batam",
       description: "(--)",
     },
     {
       id: 2,
-      name: "Mining Area Jakarta",
+      name: "Project Area Makasar",
       description: "(--)",
     },
     {
