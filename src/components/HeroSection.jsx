@@ -105,7 +105,7 @@ const HeroSection = () => {
 
         {/* Card 2 */}
         <div className="grid-card">
-          <img src="/eco.jpg" alt="eco" />
+          <img src="/eco.png" alt="eco" />
           <div className="hover-overlay">
             <p>Sustainability is at the core of our business, with ongoing initiatives to protect the environment and minimize our operational footprint.</p>
           </div>
