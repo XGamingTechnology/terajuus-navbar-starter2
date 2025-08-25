@@ -23,17 +23,18 @@ export default function NewsSection() {
     {
       id: 2,
       title: "PT Teraju to Conduct Public Consultation Following July 2, 2025 Meeting in Accordance with Government Regulation No. 5/2021",
-      date: "Juli 10, 2025",
+      date: "Juni 10, 2025",
       excerpt: "Following the July 2, 2025 meeting, PT Teraju is set to carry out a Public Consultation as mandated by Government Regulation No. 5/2021.",
       category: "Environment",
       image: "/news2.jpg",
     },
     {
       id: 3,
-      title: "Community Development Program Reaches 1000+ Coastal Families",
-      date: "December 5, 2025",
-      excerpt: "Our CSR initiative has successfully provided education and infrastructure support...",
-      category: "Community",
+      title: "PT Teraju Joins Development Plan of CitraLand City Makassar to Support Sustainable Urban Growth",
+      date: "Juli 5, 2025",
+      excerpt:
+        "PT Teraju officially joins the development of CitraLand City Makassar, supporting a large-scale urban project in collaboration with the provincial government and investors. The initiative emphasizes sustainable growth, modern infrastructure, and community engagement",
+      category: "Business",
       image: "/news3.jpg",
     },
     {
