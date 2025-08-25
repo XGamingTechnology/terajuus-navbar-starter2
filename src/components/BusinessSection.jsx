@@ -17,13 +17,13 @@ export default function BusinessSection() {
     {
       id: 1,
       name: "Project Area Batam",
-      description: "Kegiatan pembersihan dan pemanfaatan hasil sedimentasi Pasir Laut di wilayah pulau Lingga Batam. Proses ini melibatkan pengerukan material pasir laut berkualitas tinggi yang terbentuk secara alami, yang kemudian diproses dan didistribusikan untuk mendukung berbagai proyek infrastruktur dan pembangunan di kawasan Batam dan sekitarnya.",
+      description: "Activities involving the cleaning and utilization of marine sand sedimentation results in the Lingga Island area of Batam. This process entails dredging high-quality marine sand material that forms naturally, which is then processed and distributed to support various infrastructure projects and developments in the Batam region and its surroundings.",
       image: "/areabatam.jpg",
     },
     {
       id: 2,
       name: "Project Area Makasar",
-      description: "Kegiatan penyusunan Area Reklamasi di Pulau Lae Lae Kota Makassar. Proyek ini berfokus pada penciptaan lahan baru melalui reklamasi pantai dengan menggunakan material pasir laut berkualitas tinggi, yang dirancang untuk mendukung pengembangan kawasan pesisir dan infrastruktur di Kota Makassar.",
+      description: "Activities focused on constructing Reclamation Areas on Lae Lae Island in Makassar City. This project centers on creating new land through coastal reclamation using high-quality marine sand materials, designed to support the development of coastal areas and infrastructure within Makassar City.",
       image: "/areasulawesi.png",
     },
   ];
@@ -375,12 +375,12 @@ export default function BusinessSection() {
             {[
               {
                 name: "Marine Sand",
-                spec: "(Spesifikasi: Kadar silika >95%, ukuran butir 0.1-2mm)",
+                spec: "Our Marine Sand has been carefully analyzed in a certified laboratory, ensuring its quality and suitability for various construction and industrial applications. The material is classified as Very Fine Gravelly Medium Sand, with the following characteristics : Gravel: 5.1%, Sand: 94.4%, Mud (silt & clay): 0.5%",
                 images: ["/sandmining1.jpg", "/sandmining2.jpg", "/sandmining3.jpg", "/sandmining4.jpg"],
               },
               {
                 name: "Land Reclamation Sand",
-                spec: "(Spesifikasi: Material dengan kadar garam rendah)",
+                spec: "High-quality marine sand specifically processed and supplied for large-scale land reclamation projects. Our land reclamation sand is sourced through environmentally responsible dredging practices and is ideal for coastal development, island expansion, and infrastructure projects. The material is carefully graded to ensure optimal compaction, stability, and compatibility with engineering specifications for sustainable land creation. ",
                 images: ["/sandrecla1.jpg", "/sandrecla2.jpg", "/sandrecla3.jpg"],
               },
             ].map((product, index) => (
