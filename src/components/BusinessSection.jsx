@@ -393,7 +393,7 @@ export default function BusinessSection() {
               {
                 name: "Land Reclamation Sand",
                 spec: "(Spesifikasi: Material dengan kadar garam rendah)",
-                images: ["/sandrecla1.jpg", "/sandrecla2.jpg", "/sandrecla3"], // Ganti dengan path gambar produk
+                images: ["/sandrecla1.jpg", "/sandrecla2.jpg", "/sandrecla3.jpg"], // Ganti dengan path gambar produk
               },
             ].map((product, index) => (
               <motion.div
