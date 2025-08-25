@@ -4,6 +4,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules'; // Import modul Swiper
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 export default function BusinessSection() {
   const [activeArea, setActiveArea] = useState(0);
@@ -12,27 +18,20 @@ export default function BusinessSection() {
       id: 1,
       name: "Project Area Batam",
       description: "(--)",
+      image: "/areabatam.jpg",
     },
     {
       id: 2,
       name: "Project Area Makasar",
       description: "(--)",
+      image: "/areasulawesi.png",
     },
-    {
-      id: 3,
-      name: "Distribution Area Surabaya",
-      description: "(--)",
-    },
-    {
-      id: 4,
-      name: "Distribution Area Pekanbaru",
-      description: "(--)",
-    },
+
   ];
 
   // Data Existing Market, Agent, dan Partner (placeholder)
   const existingMarket = [
-    { name: "Coming Soon", logo: "/logosulselprov.png" },
+    { name: "Coming Soon", logo: "/placeholder-logo.png" },
     // { name: "SAMUDERA INDONESIA", logo: "/placeholder-logo.png" },
     // { name: "HILLCON", logo: "/placeholder-logo.png" },
     // { name: "KBL", logo: "/placeholder-logo.png" },
@@ -50,8 +49,8 @@ export default function BusinessSection() {
 
   const partners = [
     { name: "Pemerintah Provinsi Sulawesi Selatan", logo: "/logosulselprov.png" },
-    { name: "Kementerian Kelautan dan Perikanan", logo: "/placeholder-logo.png" },
-    { name: "KEMENTERIAN ENERGI DAN SUMBER DAYA MINERAL", logo: "/placeholder-logo.png" },
+    { name: "Kementerian Kelautan dan Perikanan", logo: "/logokkp2025.png" },
+    { name: "Kementerian Energi dan Sumber Daya Mineral", logo: "/logoesdm2025.png" },
   ];
 
   const [activeTab, setActiveTab] = useState("existing-market");
@@ -260,8 +259,17 @@ export default function BusinessSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-16 flex items-center justify-center mb-4">
+                <div className="bg-white w-32 h-32 flex items-center justify-center mb-4 overflow-hidden">
+                  {item.logo && item.logo !== "/placeholder-logo.png" ? (
+                    <img 
+                      src={item.logo} 
+                      alt={item.name} 
+                      className="w-full h-full object-contain p-2"
+                    />
+                  ) : (
+                  // Fallback jika tidak ada logo atau menggunakan placeholder
                   <span className="text-gray-500 text-xs text-center">{item.name}</span>
+                  )}
                 </div>
                 <p className="text-gray-700 text-center">{item.name}</p>
               </motion.div>
@@ -281,11 +289,26 @@ export default function BusinessSection() {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Image Area */}
             <div className="lg:w-2/3">
-              <div className="bg-gray-200 h-96 md:h-[500px] rounded-xl flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-orange-400/20"></div>
-                <div className="text-center z-10">
-                  <span className="text-6xl font-bold text-white/30">AREA {activeArea + 1}</span>
-                  <p className="text-white/70 mt-4 text-xl">Gambar {operationAreas[activeArea].name}</p>
+              <div className="bg-gray-200 h-96 md:h-[500px] rounded-xl relative overflow-hidden">
+                {operationAreas[activeArea].image ? (
+                  <img 
+                    src={operationAreas[activeArea].image} 
+                    alt={operationAreas[activeArea].name} 
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  // Fallback jika tidak ada gambar
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-orange-400/20"></div>
+                )}
+                <div className="absolute inset-0 flex items-center justify-center text-center">
+                  <div>
+                    <span className="text-4xl md:text-2xl text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+
+                    </span>
+                    {/* <p className="text-white/90 mt-2 md:mt-4 text-lg md:text-xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+                      Gambar {operationAreas[activeArea].name}
+                    </p> */}
+                  </div>
                 </div>
               </div>
             </div>
@@ -359,37 +382,52 @@ export default function BusinessSection() {
             <p className="text-lg text-gray-700">High Quality Materials for Construction and Industry</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Grid untuk Produk */}
+          <div className="grid md:grid-cols-2 gap-8">
             {[
               {
                 name: "Marine Sand",
                 spec: "(Spesifikasi: Kadar silika >95%, ukuran butir 0.1-2mm)",
-              },
-              {
-                name: "Silica Sand",
-                spec: "(Spesifikasi: Kadar silika >99%, untuk industri kaca & semen)",
-              },
-              {
-                name: "Construction Sand",
-                spec: "(Spesifikasi: Campuran ukuran butir untuk concrete batching)",
+                images: ["/sandmining1.jpg", "/sandmining2.jpg", "/sandmining3.jpg", "/sandmining4.jpg"], // Ganti dengan path gambar produk
               },
               {
                 name: "Land Reclamation Sand",
                 spec: "(Spesifikasi: Material dengan kadar garam rendah)",
-              },
-              {
-                name: "Filter Sand",
-                spec: "(Spesifikasi: Ukuran butir tergradasi untuk sistem filtrasi)",
-              },
-              {
-                name: "Specialty Sands",
-                spec: "(Spesifikasi: Pasir dengan karakteristik khusus untuk industri tertentu)",
+                images: ["/sandrecla1.jpg", "/sandrecla2.jpg", "/sandrecla3.jpg"], // Ganti dengan path gambar produk
               },
             ].map((product, index) => (
-              <motion.div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} viewport={{ once: true }}>
-                <div className="h-48 bg-gradient-to-r from-blue-300 to-orange-300 flex items-center justify-center">
-                  <span className="text-white text-2xl font-bold">{product.name}</span>
+              <motion.div
+                key={index}
+                className="bg-white rounded-xl shadow-lg overflow-hidden"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                {/* Carousel Gambar Produk */}
+                <div className="h-64 md:h-80"> {/* Atur tinggi carousel */}
+                  <Swiper
+                    modules={[Navigation, Pagination]} // Tambahkan modul yang dibutuhkan
+                    spaceBetween={10} // Jarak antar slide
+                    slidesPerView={1} // Jumlah slide yang terlihat sekaligus
+                    loop={true} // Loop slide
+                    navigation // Tampilkan tombol navigasi (prev/next)
+                    pagination={{ clickable: true }} // Tampilkan indikator pagination
+                    className="h-full w-full"
+                  >
+                    {product.images.map((img, imgIndex) => (
+                      <SwiperSlide key={imgIndex} className="flex items-center justify-center">
+                        <img
+                          src={img}
+                          alt={`${product.name} - Image ${imgIndex + 1}`}
+                          className="w-full h-full object-cover" // Pastikan gambar memenuhi slide
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
                 </div>
+
+                {/* Informasi Produk */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{product.name}</h3>
                   <p className="text-gray-700">{product.spec}</p>
