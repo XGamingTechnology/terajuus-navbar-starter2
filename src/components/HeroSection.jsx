@@ -1,25 +1,22 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import { CheckCircle, XCircle } from "lucide-react";
 
 // Data untuk News Section
 const newsItems = [
   {
-    title: 'PT Teraju Signs Agreement with Southeast Asia Partners',
-    date: 'July 20, 2025',
-    snippet:
-      'A new milestone in our experience initiative was marked with a signed agreement to supply marine sand to Southeast Asian countries...',
+    title: "PT Teraju Signs Agreement with Southeast Asia Partners",
+    date: "July 20, 2025",
+    snippet: "A new milestone in our experience initiative was marked with a signed agreement to supply marine sand to Southeast Asian countries...",
   },
   {
-    title: 'Sustainable Mining Practices in Action',
-    date: 'July 15, 2025',
-    snippet:
-      'Our operations at Pulau Batam highlight eco-conscious extraction techniques, leading the region in responsible dredging...',
+    title: "Sustainable Mining Practices in Action",
+    date: "July 15, 2025",
+    snippet: "Our operations at Pulau Batam highlight eco-conscious extraction techniques, leading the region in responsible dredging...",
   },
   {
-    title: 'Community Development Program Launched',
-    date: 'July 10, 2025',
-    snippet:
-      'We’ve launched new community engagement efforts in coastal villages to support education and infrastructure...',
+    title: "Community Development Program Launched",
+    date: "July 10, 2025",
+    snippet: "We’ve launched new community engagement efforts in coastal villages to support education and infrastructure...",
   },
 ];
 
@@ -56,9 +53,7 @@ const HeroSection = () => {
           >
             PT TERAJU USAHA SUKSES
           </h1>
-          <p style={{ fontSize: "1.2rem", marginBottom: "2rem" }}>
-            Reliable Mineral Supply for Sustainable Development
-          </p>
+          <p style={{ fontSize: "1.2rem", marginBottom: "2rem" }}>Reliable Mineral Supply for Sustainable Development</p>
         </div>
 
         {/* SHAPE BAWAH */}
@@ -81,14 +76,8 @@ const HeroSection = () => {
             padding: "0 20px",
           }}
         >
-          <span style={{ fontSize: "2.2rem", fontWeight: "normal" }}>
-            We provide high-quality sand and mineral resources
-          </span>
-          <span style={{ fontSize: "1rem", opacity: 0.9 }}>
-            to support infrastructure and development projects across Southeast
-            Asia. Trusted by international partners, we ensure consistent supply
-            and compliance with global standards.
-          </span>
+          <span style={{ fontSize: "2.2rem", fontWeight: "normal" }}>We provide high-quality sand</span>
+          <span style={{ fontSize: "1rem", opacity: 0.9 }}>to support infrastructure and development projects across Southeast Asia. Trusted by international partners, we ensure consistent supply and compliance with global standards.</span>
         </div>
       </section>
 
@@ -104,12 +93,11 @@ const HeroSection = () => {
       >
         {/* Card 1 */}
         <div className="grid-card">
-          <img src="/mining.jpg" alt="mining" />
+          <img src="/mining.png" alt="mining" />
           <div className="hover-overlay">
             <p>
-              Our mining operations utilize cutting-edge equipment and skilled
-              expertise to deliver premium-grade minerals, ensuring long-term
-              reliability for our clients.
+              We deliver products that meet the highest standards, supported by state-of-the-art equipment and skilled professionals to ensure the best quality. Every process is carried out with a strong commitment to sustainable
+              development.
             </p>
           </div>
           <span className="card-number">01</span>
@@ -119,11 +107,7 @@ const HeroSection = () => {
         <div className="grid-card">
           <img src="/eco.jpg" alt="eco" />
           <div className="hover-overlay">
-            <p>
-              Sustainability is at the core of our business, with ongoing
-              initiatives to protect the environment and minimize our
-              operational footprint.
-            </p>
+            <p>Sustainability is at the core of our business, with ongoing initiatives to protect the environment and minimize our operational footprint.</p>
           </div>
           <span className="card-number">02</span>
         </div>
@@ -132,10 +116,7 @@ const HeroSection = () => {
         <div className="grid-card">
           <img src="/community.jpg" alt="community" />
           <div className="hover-overlay">
-            <p>
-              We empower local communities through education, training, and
-              infrastructure projects that create lasting positive change.
-            </p>
+            <p>We empower local communities through education, training, and infrastructure projects that create lasting positive change.</p>
           </div>
           <span className="card-number">03</span>
         </div>
@@ -196,7 +177,7 @@ const HeroSection = () => {
             padding-left: 4% !important;
             padding-right: 4% !important;
           }
-          
+
           section:first-of-type h1 {
             font-size: 2rem !important;
             margin-bottom: 0.75rem !important;
@@ -229,12 +210,12 @@ const HeroSection = () => {
           .grid-card img {
             height: 250px;
           }
-          
+
           .hover-overlay p {
             font-size: 0.9rem;
             padding: 15px;
           }
-          
+
           .card-number {
             font-size: 1.2rem;
             bottom: 8px;
@@ -245,32 +226,32 @@ const HeroSection = () => {
           section:nth-of-type(3) {
             padding: 30px 0 !important;
           }
-          
+
           section:nth-of-type(3) .max-w-6xl {
             padding-left: 4% !important;
             padding-right: 4% !important;
           }
-          
+
           section:nth-of-type(3) .text-3xl {
             font-size: 1.875rem !important;
           }
-          
+
           section:nth-of-type(3) .mb-12 {
             margin-bottom: 2rem !important;
           }
-          
+
           section:nth-of-type(3) .gap-8 {
             gap: 1.5rem !important;
           }
-          
+
           .bg-\\[\\#fdf7f2\\] {
             padding: 1rem !important;
           }
-          
+
           .bg-\\[\\#fdf7f2\\] .text-xl {
             font-size: 1.125rem !important;
           }
-          
+
           .bg-\\[\\#fdf7f2\\] .text-sm {
             font-size: 0.875rem !important;
           }
@@ -280,22 +261,10 @@ const HeroSection = () => {
       {/* NEWS SECTION (Digabung ke Hero) */}
       <section id="news-preview" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold mb-4 text-gray-900"
-          >
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">
             Latest News
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-lg text-gray-600 mb-12"
-          >
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2, duration: 0.6 }} viewport={{ once: true }} className="text-lg text-gray-600 mb-12">
             Stay updated with our latest projects and initiatives.
           </motion.p>
 
@@ -312,9 +281,7 @@ const HeroSection = () => {
                 <p className="text-sm text-white mb-2">{item.date}</p>
                 <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
                 <p className="text-white text-sm mb-4">{item.snippet}</p>
-                <button className="text-blue-400 font-semibold hover:underline text-sm">
-                  Read More →
-                </button>
+                <button className="text-blue-400 font-semibold hover:underline text-sm">Read More →</button>
               </motion.div>
             ))}
           </div>
