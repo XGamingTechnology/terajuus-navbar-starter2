@@ -10,7 +10,7 @@ import { newsItems as allNewsItems } from "../databerita/NewsData"; // sesuaikan
 export default function NewsSection() {
   // State untuk pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 3;
 
   // --- Gunakan data dari newsData.js ---
   // Data berita sudah diimpor sebagai allNewsItems
@@ -144,15 +144,16 @@ export default function NewsSection() {
                     {/* --- Gunakan item.title dari data --- */}
                     <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">{item.title}</h3>
 
-                    {/* --- Gunakan item.excerpt dari data --- */}
-                    <p className="text-gray-700 text-sm mb-4 line-clamp-3">{item.excerpt}</p>
-
-                    <button className="text-blue-700 font-semibold hover:text-blue-800 text-sm flex items-center">
+                    {/* Tombol Read More menjadi Link */}
+                    <Link 
+                      to={`/news/${item.id}`} 
+                      className="text-blue-700 font-semibold hover:text-blue-800 text-sm flex items-center"
+                    >
                       Read More
                       <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                    </button>
+                    </Link>
                   </div>
                 </motion.div>
               ))}

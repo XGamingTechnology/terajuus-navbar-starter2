@@ -14,6 +14,18 @@ pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
    --------------------------- */
 const boardMembers = [
   {
+    name: "I MADE WARTANA",
+    position: "Komisaris Utama",
+    image: "/group.png",
+    description: "Ahli hukum dan tata kelola perusahaan dengan pengalaman lebih dari 20 tahun dalam memimpin dewan komisaris di berbagai perusahaan tambang nasional. Berkomitmen kuat pada prinsip Good Corporate Governance dan transparansi.",
+    },
+    {
+    name: "SUNARDI WIYOGO OEI",
+    position: "Komisaris",
+    image: "/group.png",
+    description: "Profesional berpengalaman di bidang keuangan korporat dan audit internal. Membawa keahlian strategis dalam pengawasan keuangan, manajemen risiko, dan memastikan kepatuhan terhadap regulasi industri pertambangan.",
+   },
+  {
     name: "IR IDWAN RIDWAN IDRIS",
     position: "Direktur Utama",
     image: "/Direktur Utama.png",

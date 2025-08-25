@@ -1,5 +1,6 @@
 // src/components/HeroSection.jsx
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // Link dari react-router-dom
 import { CheckCircle, XCircle } from "lucide-react";
 // --- Impor data berita ---
 import { getLatestNews } from "../databerita/NewsData"; // sesuaikan path jika perlu
@@ -245,7 +246,7 @@ const HeroSection = () => {
         }
       `}</style>
 
-      {/* NEWS SECTION (Digabung ke Hero) - GUNAKAN latestNews */}
+            {/* NEWS SECTION (Digabung ke Hero) - GUNAKAN latestNews */}
       <section id="news-preview" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">
@@ -269,7 +270,14 @@ const HeroSection = () => {
                 <p className="text-sm text-white mb-2">{item.date}</p>
                 <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
                 <p className="text-white text-sm mb-4">{item.excerpt}</p>
-                <button className="text-blue-400 font-semibold hover:underline text-sm">Read More →</button>
+                {/* --- GANTI BUTTON MENJADI LINK --- */}
+                <Link 
+                  to={`/news/${item.id}`} 
+                  className="text-blue-400 font-semibold hover:underline text-sm"
+                >
+                  Read More →
+                </Link>
+                {/* --- AKHIR PERUBAHAN --- */}
               </motion.div>
             ))}
           </div>

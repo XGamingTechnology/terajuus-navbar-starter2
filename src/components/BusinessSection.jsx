@@ -3,9 +3,9 @@
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Gabungkan import
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules'; // Import modul Swiper
+import { Navigation, Pagination, Keyboard } from 'swiper/modules'; // Tambahkan Keyboard
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -17,26 +17,20 @@ export default function BusinessSection() {
     {
       id: 1,
       name: "Project Area Batam",
-      description: "(--)",
+      description: "Kegiatan pembersihan dan pemanfaatan hasil sedimentasi Pasir Laut di wilayah pulau Lingga Batam. Proses ini melibatkan pengerukan material pasir laut berkualitas tinggi yang terbentuk secara alami, yang kemudian diproses dan didistribusikan untuk mendukung berbagai proyek infrastruktur dan pembangunan di kawasan Batam dan sekitarnya.",
       image: "/areabatam.jpg",
     },
     {
       id: 2,
       name: "Project Area Makasar",
-      description: "(--)",
+      description: "Kegiatan penyusunan Area Reklamasi di Pulau Lae Lae Kota Makassar. Proyek ini berfokus pada penciptaan lahan baru melalui reklamasi pantai dengan menggunakan material pasir laut berkualitas tinggi, yang dirancang untuk mendukung pengembangan kawasan pesisir dan infrastruktur di Kota Makassar.",
       image: "/areasulawesi.png",
     },
-
   ];
 
   // Data Existing Market, Agent, dan Partner (placeholder)
   const existingMarket = [
     { name: "Coming Soon", logo: "/placeholder-logo.png" },
-    // { name: "SAMUDERA INDONESIA", logo: "/placeholder-logo.png" },
-    // { name: "HILLCON", logo: "/placeholder-logo.png" },
-    // { name: "KBL", logo: "/placeholder-logo.png" },
-    // { name: "PUPUK INDONESIA LOGISTIK", logo: "/placeholder-logo.png" },
-    // { name: "WIKA", logo: "/placeholder-logo.png" },
   ];
 
   const agents = [
@@ -259,7 +253,7 @@ export default function BusinessSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-white w-32 h-32 flex items-center justify-center mb-4 overflow-hidden">
+                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-16 flex items-center justify-center mb-4">
                   {item.logo && item.logo !== "/placeholder-logo.png" ? (
                     <img 
                       src={item.logo} 
@@ -267,8 +261,7 @@ export default function BusinessSection() {
                       className="w-full h-full object-contain p-2"
                     />
                   ) : (
-                  // Fallback jika tidak ada logo atau menggunakan placeholder
-                  <span className="text-gray-500 text-xs text-center">{item.name}</span>
+                    <span className="text-gray-500 text-xs text-center">{item.name}</span>
                   )}
                 </div>
                 <p className="text-gray-700 text-center">{item.name}</p>
@@ -285,7 +278,6 @@ export default function BusinessSection() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Operation Area</h2>
             <p className="text-lg text-gray-700">Mining and Distribution Area</p>
           </div>
-
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Image Area */}
             <div className="lg:w-2/3">
@@ -300,19 +292,15 @@ export default function BusinessSection() {
                   // Fallback jika tidak ada gambar
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-orange-400/20"></div>
                 )}
-                <div className="absolute inset-0 flex items-center justify-center text-center">
+                <div className="absolute inset-0 flex items-center justify-center text-center z-10">
                   <div>
-                    <span className="text-4xl md:text-2xl text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
-
+                    <span className="text-4xl md:text-6xl font-bold text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+                      {operationAreas[activeArea].name}
                     </span>
-                    {/* <p className="text-white/90 mt-2 md:mt-4 text-lg md:text-xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
-                      Gambar {operationAreas[activeArea].name}
-                    </p> */}
                   </div>
                 </div>
               </div>
             </div>
-
             {/* Toggle Menu */}
             <div className="lg:w-1/3">
               <div className="bg-white rounded-xl shadow-lg p-6 h-96 md:h-[500px] flex flex-col">
@@ -388,51 +376,15 @@ export default function BusinessSection() {
               {
                 name: "Marine Sand",
                 spec: "(Spesifikasi: Kadar silika >95%, ukuran butir 0.1-2mm)",
-                images: ["/sandmining1.jpg", "/sandmining2.jpg", "/sandmining3.jpg", "/sandmining4.jpg"], // Ganti dengan path gambar produk
+                images: ["/sandmining1.jpg", "/sandmining2.jpg", "/sandmining3.jpg", "/sandmining4.jpg"],
               },
               {
                 name: "Land Reclamation Sand",
                 spec: "(Spesifikasi: Material dengan kadar garam rendah)",
-                images: ["/sandrecla1.jpg", "/sandrecla2.jpg", "/sandrecla3.jpg"], // Ganti dengan path gambar produk
+                images: ["/sandrecla1.jpg", "/sandrecla2.jpg", "/sandrecla3.jpg"],
               },
             ].map((product, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                {/* Carousel Gambar Produk */}
-                <div className="h-64 md:h-80"> {/* Atur tinggi carousel */}
-                  <Swiper
-                    modules={[Navigation, Pagination]} // Tambahkan modul yang dibutuhkan
-                    spaceBetween={10} // Jarak antar slide
-                    slidesPerView={1} // Jumlah slide yang terlihat sekaligus
-                    loop={true} // Loop slide
-                    navigation // Tampilkan tombol navigasi (prev/next)
-                    pagination={{ clickable: true }} // Tampilkan indikator pagination
-                    className="h-full w-full"
-                  >
-                    {product.images.map((img, imgIndex) => (
-                      <SwiperSlide key={imgIndex} className="flex items-center justify-center">
-                        <img
-                          src={img}
-                          alt={`${product.name} - Image ${imgIndex + 1}`}
-                          className="w-full h-full object-cover" // Pastikan gambar memenuhi slide
-                        />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
-
-                {/* Informasi Produk */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{product.name}</h3>
-                  <p className="text-gray-700">{product.spec}</p>
-                </div>
-              </motion.div>
+              <ProductCardWithLightbox key={index} product={product} index={index} />
             ))}
           </div>
         </div>
@@ -440,3 +392,142 @@ export default function BusinessSection() {
     </div>
   );
 }
+
+// --- KOMPONEN TAMBAHAN DI LUAR EXPORT DEFAULT ---
+const ProductCardWithLightbox = ({ product, index }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [swiperInstance, setSwiperInstance] = useState(null);
+
+  const openModal = (imgIndex) => {
+    setSelectedImageIndex(imgIndex);
+    setIsModalOpen(true);
+    // Jeda sebentar sebelum mengontrol swiper agar modal sudah di-render
+    setTimeout(() => {
+      if (swiperInstance) {
+        swiperInstance.slideToLoop(imgIndex, 0); // Geser ke gambar yang diklik tanpa animasi
+      }
+    }, 10);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Fungsi untuk menangani keyboard (Esc untuk tutup)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    if (isModalOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isModalOpen]);
+
+  return (
+    <>
+      <motion.div
+        className="bg-white rounded-xl shadow-lg overflow-hidden"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        viewport={{ once: true }}
+      >
+        {/* Carousel Gambar Produk */}
+        <div className="h-64 md:h-80 relative">
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={10}
+            slidesPerView={1}
+            loop={true}
+            navigation
+            pagination={{ clickable: true }}
+            className="h-full w-full"
+            onSwiper={setSwiperInstance} // Simpan instance swiper
+          >
+            {product.images.map((img, imgIndex) => (
+              <SwiperSlide key={imgIndex} className="flex items-center justify-center cursor-zoom-in">
+                <img
+                  src={img}
+                  alt={`${product.name} - Image ${imgIndex + 1}`}
+                  className="w-full h-full object-cover"
+                  onClick={() => openModal(imgIndex)} // Tambahkan onClick
+                />
+                {/* Overlay teks kecil "Klik untuk memperbesar" */}
+                <div 
+                  className="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded cursor-pointer"
+                  onClick={() => openModal(imgIndex)}
+                >
+                  Klik untuk memperbesar
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Informasi Produk */}
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-3">{product.name}</h3>
+          <p className="text-gray-700">{product.spec}</p>
+        </div>
+      </motion.div>
+
+      {/* Modal untuk Gambar Besar */}
+      {isModalOpen && (
+        <div 
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4 cursor-zoom-out"
+          onClick={closeModal} // Tutup modal jika klik di luar gambar
+        >
+          <div 
+            className="relative w-full h-full max-w-6xl max-h-[90vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()} // Cegah modal tutup jika klik di dalam kontainer gambar
+          >
+            {/* Tombol Close */}
+            <button
+              className="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/70 rounded-full p-2 z-10"
+              onClick={closeModal}
+              aria-label="Tutup"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Carousel di dalam Modal */}
+            <div className="w-full h-full">
+              <Swiper
+                modules={[Navigation, Pagination, Keyboard]} // Tambahkan Keyboard
+                spaceBetween={30}
+                slidesPerView={1}
+                loop={true}
+                navigation
+                pagination={{ clickable: true }}
+                keyboard={{ enabled: true }} // Aktifkan navigasi keyboard (arrow keys)
+                initialSlide={selectedImageIndex} // Mulai dari gambar yang diklik
+                className="h-full w-full"
+              >
+                {product.images.map((img, imgIndex) => (
+                  <SwiperSlide key={imgIndex} className="flex items-center justify-center">
+                    <img
+                      src={img}
+                      alt={`${product.name} - Image ${imgIndex + 1} (Zoomed)`}
+                      className="max-w-full max-h-full object-contain cursor-zoom-out"
+                      onClick={closeModal} // Tutup modal jika klik gambar
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
