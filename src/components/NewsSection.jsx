@@ -4,88 +4,16 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+// --- Impor data berita ---
+import { newsItems as allNewsItems } from "../databerita/NewsData"; // sesuaikan path jika perlu
 
 export default function NewsSection() {
   // State untuk pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  // Data berita dummy (bisa diganti dengan data real nanti)
-  const newsItems = [
-    {
-      id: 1,
-      title: "PT Teraju Applies for Marine Space Utilization Permit for Sea Sediment Management",
-      date: "May 6, 2025",
-      excerpt: "With this step, PT Teraju strengthens its role in sustainable marine development while ensuring compliance with national regulations.",
-      category: "Regulatory Affairs",
-      image: "/news1.jpg",
-    },
-    {
-      id: 2,
-      title: "PT Teraju to Conduct Public Consultation Following July 2, 2025 Meeting in Accordance with Government Regulation No. 5/2021",
-      date: "Juni 10, 2025",
-      excerpt: "Following the July 2, 2025 meeting, PT Teraju is set to carry out a Public Consultation as mandated by Government Regulation No. 5/2021.",
-      category: "Environment",
-      image: "/news2.jpg",
-    },
-    {
-      id: 3,
-      title: "PT Teraju Joins Development Plan of CitraLand City Makassar to Support Sustainable Urban Growth",
-      date: "Juli 5, 2025",
-      excerpt:
-        "PT Teraju officially joins the development of CitraLand City Makassar, supporting a large-scale urban project in collaboration with the provincial government and investors. The initiative emphasizes sustainable growth, modern infrastructure, and community engagement",
-      category: "Business",
-      image: "/news3.jpg",
-    },
-    {
-      id: 4,
-      title: "New Technology Implementation Increases Mining Efficiency by 30%",
-      date: "November 28, 2025",
-      excerpt: "Advanced dredging technology deployment shows significant operational improvements...",
-      category: "Technology",
-      image: "/news4.jpg",
-    },
-    {
-      id: 5,
-      title: "PT. Teraju Achieves ISO 14001 Certification for Environmental Management",
-      date: "November 20, 2025",
-      excerpt: "International recognition for our commitment to sustainable environmental practices...",
-      category: "Certification",
-      image: "/news5.jpg",
-    },
-    {
-      id: 6,
-      title: "Record Production Milestone: 1 Million Tons of Marine Sand Processed",
-      date: "November 15, 2025",
-      excerpt: "Historic achievement demonstrates our growing capacity and market leadership...",
-      category: "Achievement",
-      image: "/news6.jpg",
-    },
-    {
-      id: 7,
-      title: "Strategic Partnership with Leading Construction Company Announced",
-      date: "November 8, 2025",
-      excerpt: "Long-term supply agreement to support major infrastructure development projects...",
-      category: "Partnership",
-      image: "/news7.jpg",
-    },
-    {
-      id: 8,
-      title: "Innovation Lab Inaugurated for Research in Marine Material Processing",
-      date: "October 30, 2025",
-      excerpt: "State-of-the-art facility will drive R&D in sustainable material processing techniques...",
-      category: "Innovation",
-      image: "/news8.jpg",
-    },
-    {
-      id: 9,
-      title: "Leadership Team Expansion with Appointment of New VP Operations",
-      date: "October 22, 2025",
-      excerpt: "Industry veteran joins to oversee operational excellence and growth strategy...",
-      category: "Leadership",
-      image: "/news9.jpg",
-    },
-  ];
+  // --- Gunakan data dari newsData.js ---
+  // Data berita sudah diimpor sebagai allNewsItems
 
   // Kategori berita
   const categories = [
@@ -95,12 +23,21 @@ export default function NewsSection() {
     { id: "community", name: "Community" },
     { id: "technology", name: "Technology" },
     { id: "achievement", name: "Achievement" },
+    { id: "certification", name: "Certification" },
+    { id: "partnership", name: "Partnership" },
+    { id: "innovation", name: "Innovation" },
+    { id: "leadership", name: "Leadership" },
+    { id: "regulatory affairs", name: "Regulatory Affairs" },
   ];
 
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   // Filter berita berdasarkan kategori
-  const filteredNews = selectedCategory === "all" ? newsItems : newsItems.filter((item) => item.category.toLowerCase() === selectedCategory);
+  const filteredNews = selectedCategory === "all" 
+    ? allNewsItems 
+    : allNewsItems.filter((item) => 
+        item.category && item.category.toLowerCase() === selectedCategory
+      );
 
   // Pagination
   const totalPages = Math.ceil(filteredNews.length / itemsPerPage);
@@ -189,19 +126,25 @@ export default function NewsSection() {
                   viewport={{ once: true }}
                 >
                   {/* News Image */}
-                  <div className="h-48 bg-gradient-to-r from-blue-300 to-orange-300 flex items-center justify-center">
-                    <span className="text-white text-lg font-semibold">News Image {item.id}</span>
-                  </div>
+                  {/* --- Gunakan item.image dari data --- */}
+                  <div 
+                    className="h-48 bg-cover bg-center"
+                    style={{ backgroundImage: `url('${item.image}')` }}
+                  ></div>
 
                   {/* News Content */}
                   <div className="p-6">
                     <div className="flex justify-between items-center mb-3">
+                      {/* --- Gunakan item.category dari data --- */}
                       <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">{item.category}</span>
+                      {/* --- Gunakan item.date dari data --- */}
                       <span className="text-sm text-gray-500">{formatDate(item.date)}</span>
                     </div>
 
+                    {/* --- Gunakan item.title dari data --- */}
                     <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">{item.title}</h3>
 
+                    {/* --- Gunakan item.excerpt dari data --- */}
                     <p className="text-gray-700 text-sm mb-4 line-clamp-3">{item.excerpt}</p>
 
                     <button className="text-blue-700 font-semibold hover:text-blue-800 text-sm flex items-center">

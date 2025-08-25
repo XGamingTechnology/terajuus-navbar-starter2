@@ -1,26 +1,13 @@
+// src/components/HeroSection.jsx
 import { motion } from "framer-motion";
 import { CheckCircle, XCircle } from "lucide-react";
-
-// Data untuk News Section
-const newsItems = [
-  {
-    title: "PT Teraju Signs Agreement with Southeast Asia Partners",
-    date: "July 20, 2025",
-    snippet: "A new milestone in our experience initiative was marked with a signed agreement to supply marine sand to Southeast Asian countries...",
-  },
-  {
-    title: "Sustainable Mining Practices in Action",
-    date: "July 15, 2025",
-    snippet: "Our operations at Pulau Batam highlight eco-conscious extraction techniques, leading the region in responsible dredging...",
-  },
-  {
-    title: "Community Development Program Launched",
-    date: "July 10, 2025",
-    snippet: "We’ve launched new community engagement efforts in coastal villages to support education and infrastructure...",
-  },
-];
+// --- Impor data berita ---
+import { getLatestNews } from "../databerita/NewsData"; // sesuaikan path jika perlu
 
 const HeroSection = () => {
+  // --- Ambil 3 berita terbaru ---
+  const latestNews = getLatestNews(3);
+
   return (
     <>
       {/* HERO SECTION */}
@@ -244,21 +231,21 @@ const HeroSection = () => {
             gap: 1.5rem !important;
           }
 
-          .bg-\\[\\#fdf7f2\\] {
+          .bg-\\[\\#d16b33\\] {
             padding: 1rem !important;
           }
 
-          .bg-\\[\\#fdf7f2\\] .text-xl {
+          .bg-\\[\\#d16b33\\] .text-xl {
             font-size: 1.125rem !important;
           }
 
-          .bg-\\[\\#fdf7f2\\] .text-sm {
+          .bg-\\[\\#d16b33\\] .text-sm {
             font-size: 0.875rem !important;
           }
         }
       `}</style>
 
-      {/* NEWS SECTION (Digabung ke Hero) */}
+      {/* NEWS SECTION (Digabung ke Hero) - GUNAKAN latestNews */}
       <section id="news-preview" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">
@@ -269,9 +256,10 @@ const HeroSection = () => {
           </motion.p>
 
           <div className="grid gap-8 md:grid-cols-3">
-            {newsItems.map((item, index) => (
+            {/* --- GUNAKAN latestNews.map dan item.id sebagai key --- */}
+            {latestNews.map((item, index) => (
               <motion.div
-                key={index}
+                key={item.id} // gunakan id sebagai key, lebih baik dari index
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.5 }}
@@ -280,7 +268,7 @@ const HeroSection = () => {
               >
                 <p className="text-sm text-white mb-2">{item.date}</p>
                 <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-                <p className="text-white text-sm mb-4">{item.snippet}</p>
+                <p className="text-white text-sm mb-4">{item.excerpt}</p>
                 <button className="text-blue-400 font-semibold hover:underline text-sm">Read More →</button>
               </motion.div>
             ))}
