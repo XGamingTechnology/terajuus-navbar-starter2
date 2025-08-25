@@ -370,6 +370,15 @@ export default function AboutSection() {
       {/* Leadership Team Section (unchanged) */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
+          {/* Gambar Struktur Organisasi */}
+          <div className="text-center mb-16">
+            <img 
+              src="/struktur.png" 
+              alt="Struktur Organisasi PT Teraju Usaha Sukses" 
+              className="w-full max-w-4xl h-auto rounded-xl shadow-lg mx-auto"
+            />
+          </div>
+
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Profiles of Board Members</h2>
           </div>
