@@ -305,8 +305,8 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* -------------------------
-         Legality Section (PDF)
+       {/* -------------------------
+         Legality Section (PDF) - Diperbaiki untuk kompatibilitas semua device
          ------------------------- */}
       <section className="py-20 bg-gray-100">
         <div className="max-w-6xl mx-auto px-6">
@@ -318,9 +318,18 @@ export default function AboutSection() {
           {/* Grid Dokumen */}
           <div className="grid md:grid-cols-4 gap-6">
             {documentsList.map((item, index) => (
-              <motion.div key={index} className="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer group" whileHover={{ y: -10 }} transition={{ duration: 0.3 }} onClick={() => openDoc(item.file)}>
+              <motion.div 
+                key={index} 
+                className="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer group" 
+                whileHover={{ y: -10 }} 
+                transition={{ duration: 0.3 }} 
+                onClick={() => openDoc(item.file)}
+              >
                 {/* Thumbnail (opsional) */}
-                <div className="h-48 bg-cover bg-center" style={{ backgroundImage: item.image ? `url('${item.image}')` : "none", backgroundColor: item.image ? undefined : "#EDF2F7" }}>
+                <div 
+                  className="h-48 bg-cover bg-center" 
+                  style={{ backgroundImage: item.image ? `url('${item.image}')` : "none", backgroundColor: item.image ? undefined : "#EDF2F7" }}
+                >
                   {!item.image && <div className="h-full flex items-center justify-center text-gray-600">📄 {item.name}</div>}
                 </div>
 
@@ -332,47 +341,60 @@ export default function AboutSection() {
             ))}
           </div>
 
-          {/* Modal PDF Viewer (scroll all pages) */}
+          {/* Modal PDF Viewer (pakai iframe untuk kompatibilitas semua device) */}
           {selectedDoc && (
-            <div className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50" onClick={closeDoc}>
-              <div className="relative bg-white rounded-lg shadow-xl w-full max-w-5xl h-[90vh] overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
-                <div className="flex justify-between items-center mb-3">
-                  <div className="font-semibold">Preview — {selectedDoc}</div>
+            <div 
+              className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+              onClick={closeDoc}
+            >
+              <div 
+                className="relative bg-white rounded-lg shadow-xl w-full max-w-5xl h-[90vh] overflow-hidden flex flex-col"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Header Modal */}
+                <div className="flex justify-between items-center p-4 border-b">
+                  <div className="font-semibold">Preview — {selectedDoc.split('/').pop()}</div>
                   <div className="flex items-center gap-2">
-                    <a href={selectedDoc} target="_blank" rel="noreferrer" className="text-sm text-blue-700 underline">
+                    <a 
+                      href={selectedDoc} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="text-sm text-blue-700 underline"
+                    >
                       Open in new tab
                     </a>
-                    <button onClick={closeDoc} className="bg-gray-200 px-3 py-1 rounded">
+                    <button 
+                      onClick={closeDoc} 
+                      className="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded transition-colors"
+                    >
                       Close ✖
                     </button>
                   </div>
                 </div>
 
-                <div className="flex-1">
-                  {pdfError && <div className="text-red-600 mb-4">Failed to load document: {pdfError}</div>}
+                {/* Konten PDF - pakai iframe */}
+                <div className="flex-1 overflow-auto p-4 bg-gray-100">
+                  {pdfError && (
+                    <div className="text-red-600 mb-4 p-4 bg-white rounded-lg shadow">
+                      <p className="font-semibold">Failed to load document:</p>
+                      <p className="text-sm">{pdfError}</p>
+                      <p className="text-xs mt-2 text-gray-500">
+                        Note: Some mobile browsers may not support direct PDF preview. 
+                        Please use "Open in new tab" or download the file to view it.
+                      </p>
+                    </div>
+                  )}
 
-                  <Document
-                    file={{ url: selectedDoc }}
-                    onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-                    onLoadError={(err) => {
-                      console.error("react-pdf load error:", err);
-                      setPdfError(err?.message || "Unknown error");
+                  {/* Gunakan iframe untuk kompatibilitas semua device */}
+                  <iframe
+                    src={selectedDoc}
+                    title={`Preview - ${selectedDoc.split('/').pop()}`}
+                    className="w-full h-full border-0 rounded-lg shadow-inner"
+                    onError={(err) => {
+                      console.error("iframe load error:", err);
+                      setPdfError("Unable to load document in iframe");
                     }}
-                    loading={<div className="text-center py-12">Loading document...</div>}
-                  >
-                    {/* Render semua halaman (scrollable) */}
-                    {numPages &&
-                      Array.from(new Array(numPages), (el, i) => (
-                        <div key={`page_${i + 1}`} className="flex justify-center my-4">
-                          <Page
-                            pageNumber={i + 1}
-                            width={pageWidth}
-                            renderTextLayer={false} // matiin lapisan teks
-                            renderAnnotationLayer={false} // matiin highlight/link
-                          />
-                        </div>
-                      ))}
-                  </Document>
+                  ></iframe>
                 </div>
               </div>
             </div>
