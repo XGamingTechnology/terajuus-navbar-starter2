@@ -17,14 +17,15 @@ const boardMembers = [
     name: "I MADE WARTANA",
     position: "Komisaris Utama",
     image: "/group.png",
-    description: "Ahli hukum dan tata kelola perusahaan dengan pengalaman lebih dari 20 tahun dalam memimpin dewan komisaris di berbagai perusahaan tambang nasional. Berkomitmen kuat pada prinsip Good Corporate Governance dan transparansi.",
-    },
-    {
+    description:
+      "Ahli hukum dan tata kelola perusahaan dengan pengalaman lebih dari 20 tahun dalam memimpin dewan komisaris di berbagai perusahaan tambang nasional. Berkomitmen kuat pada prinsip Good Corporate Governance dan transparansi.",
+  },
+  {
     name: "SUNARDI WIYOGO OEI",
     position: "Komisaris",
     image: "/group.png",
     description: "Profesional berpengalaman di bidang keuangan korporat dan audit internal. Membawa keahlian strategis dalam pengawasan keuangan, manajemen risiko, dan memastikan kepatuhan terhadap regulasi industri pertambangan.",
-   },
+  },
   {
     name: "IR IDWAN RIDWAN IDRIS",
     position: "Direktur Utama",
@@ -47,7 +48,7 @@ const boardMembers = [
     name: "SARIPUDDIN. R",
     position: "Direktur Keuangan",
     image: "/group.png",
-    description: "Ahli keuangan korporat dengan sertifikasi CPA dan pengalaman lebih dari 15 tahun dalam pembiayaan dan manajemen risiko sektor tambang.",
+    description: "Ahli keuangan korporat dengan pengalaman lebih dari 15 tahun dalam pembiayaan dan manajemen risiko sektor tambang.",
   },
   {
     name: "RIZKY RAMDANI",
@@ -384,11 +385,7 @@ export default function AboutSection() {
         <div className="max-w-6xl mx-auto px-6">
           {/* Gambar Struktur Organisasi */}
           <div className="text-center mb-16">
-            <img 
-              src="/strukturlama.png" 
-              alt="Struktur Organisasi PT Teraju Usaha Sukses" 
-              className="w-full max-w-4xl h-auto rounded-xl shadow-lg mx-auto"
-            />
+            <img src="/strukturlama.png" alt="Struktur Organisasi PT Teraju Usaha Sukses" className="w-full max-w-4xl h-auto rounded-xl shadow-lg mx-auto" />
           </div>
 
           <div className="text-center mb-16">
