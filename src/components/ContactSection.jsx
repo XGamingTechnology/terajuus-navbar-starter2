@@ -6,20 +6,25 @@ import { Link } from "react-router-dom";
 
 export default function ContactSection() {
   return (
-    <div className="min-h-screen bg-gray-50"   >
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Banner Section */}
-      <section className="relative h-96 md:h-[500px] bg-gradient-to-r from-blue-400 to-orange-600 flex items-center justify-center"
-      style={{
-          position: "relative" ,
-          height: "100vh" ,
-          width: "100%" ,
-          background: `url("/Picture1.jpg") center/cover no-repeat`, 
-          }}
+      <section
+        className="relative h-96 md:h-[500px] bg-gradient-to-r from-blue-400 to-orange-600 flex items-center justify-center"
+        style={{
+          position: "relative",
+          height: "100vh",
+          width: "100%",
+          background: `url("/Picture1.jpg") center/cover no-repeat`,
+        }}
       >
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative z-10 text-center px-4">
-          <motion.h1 className="text-4xl md:text-6xl font-bold text-white mb-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} 
-          style={{
+          <motion.h1
+            className="text-4xl md:text-6xl font-bold text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{
               fontSize: "5rem",
               fontWeight: "bold",
               marginBottom: "1rem",
@@ -63,8 +68,10 @@ export default function ContactSection() {
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900 mb-1">Head Office</h4>
                     <p className="text-gray-700">
-                      Treasury Office Tower, 7th Floor Unit I, SCBD, District 8 Lot 28, Jl. Tulodong Atas 2 No. 28<br />
-                      Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta, 12190, Indonesia<br />
+                      Treasury Office Tower, 7th Floor Unit I, SCBD, District 8 Lot 28, Jl. Tulodong Atas 2 No. 28
+                      <br />
+                      Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta, 12190, Indonesia
+                      <br />
                     </p>
                   </div>
                 </div>
@@ -82,7 +89,6 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900 mb-1">Phone</h4>
-                    <p className="text-gray-700">+62 812-8483-3125</p>
                     <p className="text-gray-700">+62 22 845-8876</p>
                   </div>
                 </div>
