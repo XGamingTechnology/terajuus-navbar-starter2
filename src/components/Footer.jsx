@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* KIRI - Informasi Perusahaan */}
         <div>
-          <h3 className="text-xl font-bold mb-2">PT. Teraju Usaha Sukses 77777</h3>
+          <h3 className="text-xl font-bold mb-2">PT. Teraju Usaha Sukses 77777888888</h3>
           <p className="text-sm text-gray-400">
             Treasury Office Tower, 7th Floor Unit I, SCBD, District 8 Lot 28, Jl. Tulodong Atas 2 No. 28
             <br />
