@@ -9,16 +9,19 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-bold mb-2">PT. Teraju Usaha Sukses</h3>
           <p className="text-sm text-gray-400">
-            Treasury Office Tower, 7th Floor Unit I, SCBD, District 8 Lot 28, Jl. Tulodong Atas 2 No. 28<br />
-            Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta, 12190, Indonesia<br />
-            Telp: (022) 845-8876<br />
-            Email: terajuusahasukses@tus-com.net 
+            Treasury Office Tower, 7th Floor Unit I, SCBD, District 8 Lot 28, Jl. Tulodong Atas 2 No. 28
+            <br />
+            Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta, 12190, Indonesia
+            <br />
+            Telp: (022) 845-8876
+            <br />
+            Email: terajuusahasukses@tus-com.net
           </p>
         </div>
 
         {/* TENGAH - Slogan & Quote */}
         <div className="text-center">
-          <h4 className="text-lg font-semibold italic mb-2">“Mining the future responsibly”</h4>
+          <h4 className="text-lg font-semibold italic mb-2">“Mining the future responsibly|testttt”</h4>
           <p className="text-sm text-gray-400">
             "The sea, once it casts its spell, holds one in its net of wonder forever."
             <br />– Jacques Yves Cousteau
