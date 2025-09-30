@@ -22,33 +22,49 @@ jobs:
         run: |
           echo ">>> Connect ke VPS dan mulai deploy..."
           ssh -o StrictHostKeyChecking=no ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} << 'EOF'
-            set -e
-            echo ">>> Masuk ke direktori project"
-            cd ~/terajuus-navbar-starter2
+            set -e  # Exit immediately if a command exits with a non-zero status
 
-            echo ">>> Load environment (agar npm dikenali)"
+            PROJECT_DIR="$HOME/terajuus-navbar-starter2"
+            NGINX_ROOT="/var/www/tus-com"
+
+            echo ">>> Masuk ke direktori project"
+            if [ ! -d "$PROJECT_DIR" ]; then
+              echo "ERROR: Direktori proyek tidak ditemukan: $PROJECT_DIR"
+              exit 1
+            fi
+            cd "$PROJECT_DIR"
+
+            echo ">>> Load environment (agar npm/nvm dikenali)"
             if [ -f "$HOME/.bashrc" ]; then
-              source $HOME/.bashrc
+              source "$HOME/.bashrc"
             fi
 
-            # kalau pakai nvm
+            # Load nvm jika digunakan
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-            echo ">>> Update branch"
+            echo ">>> Update branch versibaru"
             git fetch origin versibaru
             git reset --hard origin/versibaru
 
             echo ">>> Install dependencies & build"
-            npm install
+            npm ci --prefer-offline  # lebih cepat & konsisten daripada npm install
             npm run build
 
-            echo ">>> Deploy ke nginx directory"
-            sudo rm -rf /var/www/tus-com/*
-            sudo cp -r dist/* /var/www/tus-com/
+            # Pastikan folder dist ada
+            if [ ! -d "dist" ]; then
+              echo "ERROR: Folder 'dist' tidak ditemukan setelah build!"
+              exit 1
+            fi
+
+            echo ">>> Deploy ke direktori nginx"
+            sudo rm -rf "${NGINX_ROOT:?}/*"
+            sudo cp -r dist/* "$NGINX_ROOT/"
 
             echo ">>> Reload nginx"
             sudo systemctl reload nginx
+
+            echo "✅ Deploy selesai!"
           EOF
 
       - name: Purge Cloudflare Cache
