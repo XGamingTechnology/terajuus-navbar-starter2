@@ -20,20 +20,45 @@ jobs:
 
       - name: Deploy ke VPS
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} 'bash -s' << 'EOF'
+          echo ">>> Connect ke VPS dan mulai deploy..."
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} 'bash -s' << 'EOF'
+            set -e  # kalau ada error langsung stop
+
+            echo ">>> Load PATH supaya npm bisa dipakai"
+            export NVM_DIR="$HOME/.nvm"
+            export PATH=$PATH:/usr/bin:/usr/local/bin:/root/.nvm/versions/node/v22.20.0/bin
+
+            echo ">>> Cek versi Node & NPM"
+            node -v || echo "Node tidak ketemu!"
+            npm -v || echo "NPM tidak ketemu!"
+
+            echo ">>> Masuk ke project"
             cd ~/terajuus-navbar-starter2
+
+            echo ">>> Update branch versibaru"
             git fetch origin versibaru
             git reset --hard origin/versibaru
+
+            echo ">>> Install dependencies"
             npm install
+
+            echo ">>> Build project"
             npm run build
+
+            echo ">>> Deploy ke folder /var/www/tus-com"
             rm -rf /var/www/tus-com/*
             cp -r dist/* /var/www/tus-com/
+
+            echo ">>> Reload nginx"
             systemctl reload nginx
+
+            echo ">>> DEPLOY SELESAI!"
           EOF
 
       - name: Purge Cloudflare Cache
         run: |
-          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ vars.CF_ZONE_ID }}/purge_cache" \
-            -H "Authorization: Bearer ${{ vars.CF_API_TOKEN }}" \
+          echo ">>> Purge Cloudflare Cache..."
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CF_API_TOKEN }}" \
             -H "Content-Type: application/json" \
             --data '{"purge_everything":true}'
