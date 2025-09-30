@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* KIRI - Informasi Perusahaan */}
         <div>
-          <h3 className="text-xl font-bold mb-2">PT. Teraju Usaha Sukses</h3>
+          <h3 className="text-xl font-bold mb-2">PT. Teraju Usaha Sukses||||||||||||</h3>
           <p className="text-sm text-gray-400">
             Treasury Office Tower, 7th Floor Unit I, SCBD, District 8 Lot 28, Jl. Tulodong Atas 2 No. 28
             <br />
@@ -21,7 +21,7 @@ export default function Footer() {
 
         {/* TENGAH - Slogan & Quote */}
         <div className="text-center">
-          <h4 className="text-lg font-semibold italic mb-2">“Mining the future responsibly|testttt”</h4>
+          <h4 className="text-lg font-semibold italic mb-2">“Mining the future responsibly”</h4>
           <p className="text-sm text-gray-400">
             "The sea, once it casts its spell, holds one in its net of wonder forever."
             <br />– Jacques Yves Cousteau
