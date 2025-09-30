@@ -26,6 +26,15 @@ jobs:
             echo ">>> Masuk ke direktori project"
             cd ~/terajuus-navbar-starter2
 
+            echo ">>> Load environment (agar npm dikenali)"
+            if [ -f "$HOME/.bashrc" ]; then
+              source $HOME/.bashrc
+            fi
+
+            # kalau pakai nvm
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
             echo ">>> Update branch"
             git fetch origin versibaru
             git reset --hard origin/versibaru
@@ -35,8 +44,8 @@ jobs:
             npm run build
 
             echo ">>> Deploy ke nginx directory"
-            rm -rf /var/www/tus-com/*
-            cp -r dist/* /var/www/tus-com/
+            sudo rm -rf /var/www/tus-com/*
+            sudo cp -r dist/* /var/www/tus-com/
 
             echo ">>> Reload nginx"
             sudo systemctl reload nginx
