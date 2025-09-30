@@ -16,11 +16,11 @@ jobs:
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.7.0
         with:
-          ssh-private-key: ${{ secrets.TERAJU }}
+          ssh-private-key: ${{ vars.VPS_SSH_KEY }}
 
       - name: Deploy ke VPS
         run: |
-          ssh -o StrictHostKeyChecking=no root@IP_VPS 'bash -s' << 'EOF'
+          ssh -o StrictHostKeyChecking=no ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} 'bash -s' << 'EOF'
             cd ~/terajuus-navbar-starter2
             git fetch origin versibaru
             git reset --hard origin/versibaru
@@ -30,3 +30,10 @@ jobs:
             cp -r dist/* /var/www/tus-com/
             systemctl reload nginx
           EOF
+
+      - name: Purge Cloudflare Cache
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ vars.CF_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ vars.CF_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
