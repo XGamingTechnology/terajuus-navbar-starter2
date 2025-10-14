@@ -51,7 +51,7 @@ const boardMembers = [
     description: "Ahli keuangan korporat dengan pengalaman lebih dari 15 tahun dalam pembiayaan dan manajemen risiko sektor tambang.",
   },
   {
-    name: "RIZKY RAMDANI",
+    name: "KIKY",
     position: "Staff Teknis",
     image: "/group.png",
     description: "Lulusan teknik geologi dengan pengalaman eksplorasi lapangan dan pengolahan data geospasial. Menguasai perangkat GIS dan teknologi pertambangan.",
