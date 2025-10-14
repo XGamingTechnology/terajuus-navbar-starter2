@@ -13,7 +13,7 @@ export default function Footer() {
             <br />
             Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta, 12190, Indonesia
             <br />
-            Telp: (022) 845-8876
+            Telp: (022) 845-888766
             <br />
             Email: terajuusahasukses@tus-com.net
           </p>
