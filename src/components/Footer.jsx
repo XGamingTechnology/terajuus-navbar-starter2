@@ -15,7 +15,7 @@ export default function Footer() {
             <br />
             Telp: (022) 845-888766
             <br />
-            Email: terajuusahasukses@tus-com.net
+            Email: teraajuusahasuksess@tus-com.net
           </p>
         </div>
 
